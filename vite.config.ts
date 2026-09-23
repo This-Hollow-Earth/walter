@@ -5,6 +5,7 @@ const page = (f: string) => new URL(f, import.meta.url).pathname;
 
 export default defineConfig({
   base: "/",
+  plugins: [],
   build: {
     rollupOptions: {
       input: {
