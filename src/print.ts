@@ -1,11 +1,12 @@
 import "./style.css";
 import { QUADRANTS, RINGS } from "./types";
-import { INK, PAPER, loadEdition, numbered, quadrantNamesByIndex, ringNames, toEntries } from "./data";
+import { INK, PAPER, loadEdition, loadManifest, defaultEditionId, numbered, quadrantNamesByIndex, ringNames, toEntries } from "./data";
 import { renderRadar } from "./radar";
 import { detailHTML, editionLabel, legendHTML } from "./views";
 
 async function main() {
-  const ed = await loadEdition();
+  const manifest = await loadManifest();
+  const ed = await loadEdition(defaultEditionId(manifest));
   const blips = ed.blips;
   const nums = numbered(blips);
   const byId = new Map(blips.map((b) => [b.id, b]));
@@ -21,7 +22,7 @@ async function main() {
     paper: PAPER,
     animate: false,
   });
-  document.querySelector("#legend")!.innerHTML = legendHTML(blips, nums, () => true, byId, null);
+  document.querySelector("#legend")!.innerHTML = legendHTML(blips, nums, () => true, byId, null, null, []);
 
   const sorted = [...blips].sort((a, b) => nums.get(a.id)! - nums.get(b.id)!);
   document.querySelector("#blips")!.innerHTML = QUADRANTS.map((q) => {

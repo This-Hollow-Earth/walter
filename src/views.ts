@@ -1,8 +1,17 @@
 import type { Blip, Edition } from "./types";
-import { EVIDENCE, MOVEMENT, QUADRANTS, RINGS } from "./types";
+import { EVIDENCE, QUADRANTS, RINGS } from "./types";
 import { esc } from "./data";
+import type { Movement, MoverRow, HistoryRow } from "./history";
+import { computeMovement, computeMovers, blipHistory } from "./history";
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+export const MOVEMENT_LABEL: Record<Movement, { label: string; symbol: string }> = {
+  new: { label: "New", symbol: "◉" },
+  in: { label: "Moved in", symbol: "▲" },
+  out: { label: "Moved out", symbol: "▼" },
+  none: { label: "No change", symbol: "●" },
+};
 
 /**
  * Full legend: all four quadrant columns, grouped by ring, numbered like the
@@ -19,6 +28,8 @@ export function legendHTML(
   active: (b: Blip) => boolean,
   byId: Map<string, Blip>,
   expandedId: string | null,
+  previous: Edition | null,
+  allEditions: Edition[],
 ): string {
   return QUADRANTS.map((q) => {
     const rings = RINGS.map((r) => {
@@ -27,7 +38,7 @@ export function legendHTML(
         .sort((a, b) => nums.get(a.id)! - nums.get(b.id)!);
       if (!items.length) return "";
       return `<h4>${r.name}<small>${esc(r.meaning)}</small></h4><ol class="quadrant-list">${items
-        .map((b) => (b.id === expandedId ? expandedRow(b, nums, byId) : compactRow(b, null, nums, active, expandedId)))
+        .map((b) => (b.id === expandedId ? expandedRow(b, nums, byId, previous, allEditions) : compactRow(b, null, nums, active, expandedId, previous)))
         .join("")}</ol>`;
     }).join("");
     return `<section class="legend-q"><h3>${q.name}<small>${q.subtitle}</small></h3>${rings || '<p class="empty">No blips yet</p>'}</section>`;
@@ -48,6 +59,8 @@ export function quadrantListHTML(
   active: (b: Blip) => boolean,
   byId: Map<string, Blip>,
   expandedId: string | null,
+  previous: Edition | null,
+  allEditions: Edition[],
 ): string {
   const q = QUADRANTS.find((x) => x.id === quadrantId)!;
   const rings = RINGS.map((r) => {
@@ -56,7 +69,7 @@ export function quadrantListHTML(
       .sort((a, b) => nums.get(a.id)! - nums.get(b.id)!);
     if (!items.length) return "";
     return `<h4>${r.name}<small>${esc(r.meaning)}</small></h4><ol class="quadrant-list">${items
-      .map((b) => (b.id === expandedId ? expandedRow(b, nums, byId) : compactRow(b, quadrantId, nums, active, expandedId)))
+      .map((b) => (b.id === expandedId ? expandedRow(b, nums, byId, previous, allEditions) : compactRow(b, quadrantId, nums, active, expandedId, previous)))
       .join("")}</ol>`;
   }).join("");
   return `<div class="quadrant-header"><h2>${q.name}<small>${q.subtitle}</small></h2></div>${rings || '<p class="empty">No blips yet</p>'}`;
@@ -75,31 +88,47 @@ function compactRow(
   nums: Map<string, number>,
   active: (b: Blip) => boolean,
   expandedId: string | null,
+  previous: Edition | null,
 ): string {
   const href = quadrantId ? `#${esc(quadrantId)}/${esc(b.id)}` : `#${esc(b.id)}`;
   const dataQuadrant = quadrantId ? ` data-quadrant="${esc(quadrantId)}"` : "";
+  const mv = MOVEMENT_LABEL[computeMovement(b, previous).movement];
   return (
     `<li class="${active(b) ? "" : "inactive"}${expandedId ? " dimmed" : ""}">` +
     `<a href="${href}" data-key="${esc(b.id)}"${dataQuadrant}>` +
     `<span class="num">${nums.get(b.id)}</span>` +
     `<span class="ql-body"><span class="ql-name">${esc(b.name)}</span><span class="ql-summary">${esc(b.summary)}</span></span>` +
-    `<span class="mv" title="${MOVEMENT[b.movement].label}">${MOVEMENT[b.movement].symbol}</span></a></li>`
+    `<span class="mv" title="${mv.label}">${mv.symbol}</span></a></li>`
   );
 }
 
-function expandedRow(b: Blip, nums: Map<string, number>, byId: Map<string, Blip>): string {
-  return `<li class="expanded">` + `<button type="button" class="close" data-nav="quadrant" aria-label="Collapse">×</button>` + detailHTML(b, nums.get(b.id), byId, nums) + `</li>`;
+function expandedRow(b: Blip, nums: Map<string, number>, byId: Map<string, Blip>, previous: Edition | null, allEditions: Edition[]): string {
+  return (
+    `<li class="expanded">` +
+    `<button type="button" class="close" data-nav="quadrant" aria-label="Collapse">×</button>` +
+    detailHTML(b, nums.get(b.id), byId, nums, previous, allEditions) +
+    `</li>`
+  );
 }
 
-/** Full detail of one blip (expanded row and print view). */
-export function detailHTML(b: Blip, num: number | undefined, byId: Map<string, Blip>, nums: Map<string, number>): string {
+/** Full detail of one blip (expanded row and print view). `previous`/`allEditions` are optional (print = single edition, no history). */
+export function detailHTML(
+  b: Blip,
+  num: number | undefined,
+  byId: Map<string, Blip>,
+  nums: Map<string, number>,
+  previous: Edition | null = null,
+  allEditions: Edition[] = [],
+): string {
   const q = QUADRANTS.find((x) => x.id === b.quadrant)!;
   const r = RINGS.find((x) => x.id === b.ring)!;
   const o = b.scope.origins ?? {};
+  const { movement, previousRing } = computeMovement(b, previous);
+  const mv = MOVEMENT_LABEL[movement];
   const facts: [string, string][] = [
     ["Quadrant", `${q.name} <small>(${q.subtitle})</small>`],
     ["Ring", `<strong>${r.name}</strong>: ${esc(r.meaning)}`],
-    ["Movement", `${MOVEMENT[b.movement].symbol} ${MOVEMENT[b.movement].label}${b.previous_ring ? ` (was ${b.previous_ring.toUpperCase()})` : ""}`],
+    ["Movement", `${mv.symbol} ${mv.label}${previousRing ? ` (was ${previousRing.toUpperCase()})` : ""}`],
     ["Evidence", `${b.evidence} ${EVIDENCE[b.evidence]}`],
   ];
   if (b.severity) facts.push(["Severity", cap(b.severity)]);
@@ -128,6 +157,8 @@ export function detailHTML(b: Blip, num: number | undefined, byId: Map<string, B
     .map((id) => `<a href="#${esc(id)}" data-key="${esc(id)}">${nums.get(id)}. ${esc(byId.get(id)!.name)}</a>`)
     .join(" · ");
 
+  const history = allEditions.length > 1 ? historyHTML(blipHistory(b.id, allEditions)) : "";
+
   return `
     <article class="blip-detail" id="detail-${esc(b.id)}">
       <header>
@@ -141,6 +172,7 @@ export function detailHTML(b: Blip, num: number | undefined, byId: Map<string, B
       <p>${esc(b.rationale)}</p>
       ${b.actions.length ? `<h4>What to do</h4><ul>${b.actions.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
       ${timeline}
+      ${history}
       <h4>Sources <small>(${b.sources.length})</small></h4>
       <ol class="sources">${b.sources
         .map(
@@ -152,6 +184,68 @@ export function detailHTML(b: Blip, num: number | undefined, byId: Map<string, B
         .join("")}</ol>
       ${related ? `<h4>Related</h4><p class="related">${related}</p>` : ""}
     </article>`;
+}
+
+/** History section: one row per edition the blip is present in, oldest first (THI-105). Only shown when >1 row. */
+function historyHTML(rows: HistoryRow[]): string {
+  if (rows.length < 2) return "";
+  return (
+    `<h4>History</h4><ul class="history">` +
+    rows
+      .map((row) => {
+        const mv = MOVEMENT_LABEL[row.movement];
+        const glyph = row.movement === "none" ? "" : ` <span class="mv" title="${mv.label}">${mv.symbol} ${mv.label}</span>`;
+        const reason = row.reason ? ` — ${esc(row.reason)}` : "";
+        return `<li><time>${esc(row.label)}</time> — ${row.ring.toUpperCase()} (${esc(row.evidence)})${glyph}${reason}</li>`;
+      })
+      .join("") +
+    `</ul>`
+  );
+}
+
+/** Movers view: New / Moved in / Moved out / Retired between two editions. */
+export function moversHTML(
+  from: Edition | null,
+  to: Edition,
+  nums: Map<string, number>,
+): string {
+  const rows = computeMovers(from, to);
+  const section = (kind: MoverRow["kind"], title: string) => {
+    const items = rows.filter((r) => r.kind === kind);
+    if (!items.length) return `<section class="movers-section"><h3>${title}</h3><p class="empty">None</p></section>`;
+    return (
+      `<section class="movers-section"><h3>${title} <small>(${items.length})</small></h3><ol class="quadrant-list movers-list">` +
+      items
+        .map((row) => {
+          const q = QUADRANTS.find((x) => x.id === row.blip.quadrant)!;
+          const ringChange =
+            row.fromRing && row.toRing
+              ? `${row.fromRing.toUpperCase()} → ${row.toRing.toUpperCase()}`
+              : row.toRing
+                ? row.toRing.toUpperCase()
+                : row.fromRing
+                  ? `was ${row.fromRing.toUpperCase()}`
+                  : "—";
+          return (
+            `<li><a href="#${esc(to.edition.id)}/${esc(row.blip.quadrant)}/${esc(row.blip.id)}" data-key="${esc(row.blip.id)}" data-quadrant="${esc(row.blip.quadrant)}">` +
+            `<span class="num">${nums.get(row.blip.id) ?? "—"}</span>` +
+            `<span class="ql-body"><span class="ql-name">${esc(row.blip.name)} <small>(${q.name})</small></span>` +
+            `<span class="ql-summary">${esc(ringChange)}${row.reason ? ` — ${esc(row.reason)}` : ""}</span></span>` +
+            `</a></li>`
+          );
+        })
+        .join("") +
+      `</ol></section>`
+    );
+  };
+  return (
+    `<div class="movers">` +
+    section("new", "New") +
+    section("in", "Moved in ▲") +
+    section("out", "Moved out ▼") +
+    section("retired", "Retired") +
+    `</div>`
+  );
 }
 
 export function editionLabel(ed: Edition): string {

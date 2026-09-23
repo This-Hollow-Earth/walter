@@ -15,8 +15,14 @@
         <span class="tagline">What changed. Where it matters. What to do next.</span>
       </div>
       <span class="edition" id="edition"></span>
+      <label class="edition-nav">
+        <button type="button" id="edition-prev" aria-label="Previous edition">‹</button>
+        <select id="f-edition" aria-label="Select edition"></select>
+        <button type="button" id="edition-next" aria-label="Next edition">›</button>
+      </label>
       <nav>
         <a href="/" aria-current="page">Radar</a>
+        <a href="#movers" id="nav-movers">Movers</a>
         <a href="/methodology.html">Methodology</a>
         <a href="/independence.html">Independence</a>
         <a href="/print.html">Print / PDF</a>
@@ -24,6 +30,7 @@
     </header>
 
     <div id="app-error" role="alert"></div>
+    <div id="edition-banner" class="edition-banner" role="note"></div>
 
     <form class="filters" onsubmit="return false">
       <label>Commodity <select id="f-commodity"></select></label>

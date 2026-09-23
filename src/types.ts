@@ -27,8 +27,10 @@ export interface Blip {
   name: string;
   quadrant: QuadrantId;
   ring: RingId;
-  movement: Movement;
-  previous_ring: RingId | null;
+  /** @deprecated computed from edition diffing (src/history.ts) now; ignored if present in YAML. */
+  movement?: Movement;
+  /** @deprecated computed from edition diffing (src/history.ts) now; ignored if present in YAML. */
+  previous_ring?: RingId | null;
   evidence: Evidence;
   severity?: Level | null;
   dominant_clock?: Clock | null;
@@ -52,6 +54,19 @@ export interface Blip {
 export interface Edition {
   edition: { id: string; label: string; published?: string | null; status?: string };
   blips: Blip[];
+}
+
+export interface EditionMeta {
+  id: string;
+  label: string;
+  published?: string | null;
+  status?: string;
+  /** false = historical-reconstruction edition, hidden from the default public selector (THI-105). */
+  public: boolean;
+}
+
+export interface EditionManifest {
+  editions: EditionMeta[];
 }
 
 export const QUADRANTS: { id: QuadrantId; name: string; subtitle: string; index: 0 | 1 | 2 | 3 }[] = [

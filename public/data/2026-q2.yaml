@@ -1,13 +1,15 @@
-# Environmental Supply Chain Radar: edition data (single source of truth)
+# Environmental Supply Chain Radar: PLACEHOLDER historical edition.
+# Reconstruction pending (THI-106+) -- blip content below is a COPY of 2026-Q4,
+# not real historical research. Do not treat rings/evidence/sources as accurate
+# for this quarter. Exists so the edition selector, Movers, and blip History views
+# are navigable ahead of Track B research landing.
 # Schema: Obsidian WALTER/prototypes/Blip schema v0.1 - prototype.md
-# All 29 v0.1 blips fully written (THI-97), sourced via THI-94/THI-93 research.
-# Content & data: CC BY 4.0
 
 edition:
-  id: 2026-q4
-  label: 2026 Q4 · v0.1
+  id: 2026-q2
+  label: 2026 Q2 (placeholder — reconstruction pending)
   published: null
-  status: prototype
+  status: historical-reconstruction
 blips:
 - id: rules-eudr
   name: EU Deforestation Regulation (EUDR)

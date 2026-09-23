@@ -31,6 +31,12 @@ h1, h2, h3, h4 { font-weight: 600; margin: 0; }
 .site-header nav a { text-decoration: none; border-bottom: 1px solid transparent; }
 .site-header nav a:hover, .site-header nav a[aria-current] { border-bottom: var(--line); }
 .edition { font-family: var(--mono); font-size: 12px; border: var(--line); padding: 2px 8px; }
+.edition-nav { display: flex; align-items: center; gap: 2px; }
+.edition-nav select { font: inherit; font-size: 12px; font-family: var(--mono); border: var(--line); background: var(--paper); color: var(--ink); padding: 2px 4px; }
+.edition-nav button { font: inherit; border: var(--line); background: var(--paper); color: var(--ink); cursor: pointer; width: 22px; height: 22px; line-height: 1; }
+.edition-nav button:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.edition-nav button:disabled { opacity: 0.3; cursor: default; }
+.edition-banner:not(:empty) { margin: 0 28px; padding: 8px 12px; border: var(--dash); font-size: 12px; color: var(--ink-soft); }
 .site-footer { border-top: var(--line); margin-top: 40px; padding: 16px 28px; font-size: 12px; display: flex; gap: 24px; flex-wrap: wrap; color: var(--ink-soft); }
 .site-footer a { color: var(--ink-soft); }
 #app-error:not(:empty) { margin: 16px 28px; padding: 10px; border: 2px dashed var(--ink); font-family: var(--mono); }
@@ -115,6 +121,14 @@ h1, h2, h3, h4 { font-weight: 600; margin: 0; }
 .num { display: inline-block; min-width: 1.6em; font-family: var(--mono); font-size: 11px; border: var(--line); border-radius: 50%; text-align: center; margin-right: 2px; }
 .num.big { font-size: 14px; min-width: 2em; padding: 3px 0; }
 .mv { font-size: 10px; }
+.movers-panel { max-width: none; }
+.movers-header h2 { font-size: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+.movers-header .mv-range { font-size: 13px; color: var(--ink-soft); font-family: var(--mono); margin: 4px 0 0; }
+.movers { display: block; }
+.movers-section { border-top: var(--dash); padding: 14px 0; }
+.movers-section h3 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.movers-section h3 small { text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
+.movers-list .ql-name small { font-weight: normal; color: var(--ink-soft); font-size: 11px; text-transform: none; }
 
 /* blip detail */
 .blip-detail header { display: flex; align-items: center; gap: 10px; margin: 0 40px 10px 0; flex-wrap: wrap; }
@@ -129,6 +143,11 @@ h1, h2, h3, h4 { font-weight: 600; margin: 0; }
 .timeline li { padding: 2px 0 4px 12px; position: relative; }
 .timeline li::before { content: ""; position: absolute; left: -4px; top: 9px; width: 7px; height: 7px; background: var(--paper); border: var(--line); border-radius: 50%; }
 .timeline time { font-family: var(--mono); font-size: 12px; }
+.history { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+.history li { padding: 3px 0; border-bottom: var(--dash); }
+.history li:last-child { border-bottom: 0; }
+.history time { font-family: var(--mono); font-size: 12px; font-weight: 600; margin-right: 6px; }
+.history .mv { font-size: 11px; margin: 0 4px; }
 .sources { font-size: 13px; padding-left: 20px; margin: 0; }
 .sources .stype, .sources .acc { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
 .related a { font-size: 13px; }
