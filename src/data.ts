@@ -1,0 +1,65 @@
+import yaml from "js-yaml";
+import type { Blip, Edition } from "./types";
+import { QUADRANTS, RINGS } from "./types";
+import type { RadarEntry, Moved, Quadrant, Ring } from "./radar";
+
+export const INK = "#434343";
+export const PAPER = "#f5f5f5";
+
+export async function loadEdition(id = "2026-q4"): Promise<Edition> {
+  const res = await fetch(`${import.meta.env.BASE_URL}data/${id}.yaml`);
+  if (!res.ok) throw new Error(`Could not load data/${id}.yaml (${res.status})`);
+  const data = yaml.load(await res.text()) as Edition;
+  validate(data);
+  return data;
+}
+
+const MOVED: Record<Blip["movement"], Moved> = { new: 2, in: 1, out: -1, none: 0 };
+
+/** Numbering follows the reading order: quadrant (Rules, Conditions, Intelligence, Responses) → ring → name. */
+export function numbered(blips: Blip[]): Map<string, number> {
+  const order = (b: Blip) => [QUADRANTS.findIndex((q) => q.id === b.quadrant), RINGS.findIndex((r) => r.id === b.ring)];
+  const sorted = [...blips].sort((a, b) => {
+    const [qa, ra] = order(a);
+    const [qb, rb] = order(b);
+    return qa - qb || ra - rb || a.name.localeCompare(b.name);
+  });
+  return new Map(sorted.map((b, i) => [b.id, i + 1]));
+}
+
+export function toEntries(blips: Blip[], nums: Map<string, number>, isActive: (b: Blip) => boolean): RadarEntry[] {
+  return blips.map((b) => ({
+    key: b.id,
+    num: nums.get(b.id)!,
+    label: b.name,
+    quadrant: QUADRANTS.find((q) => q.id === b.quadrant)!.index as Quadrant,
+    ring: RINGS.findIndex((r) => r.id === b.ring) as Ring,
+    moved: MOVED[b.movement],
+    active: isActive(b),
+  }));
+}
+
+/** radar.js indexes quadrants by screen position; supply names in that order. */
+export function quadrantNamesByIndex(): { name: string }[] {
+  const names: { name: string }[] = [];
+  for (const q of QUADRANTS) names[q.index] = { name: q.name.toUpperCase() };
+  return names;
+}
+
+export const ringNames = () => RINGS.map((r) => ({ name: r.name }));
+
+function validate(data: Edition): void {
+  const ids = new Set<string>();
+  for (const b of data.blips) {
+    if (ids.has(b.id)) throw new Error(`Duplicate blip id: ${b.id}`);
+    ids.add(b.id);
+    if (!QUADRANTS.some((q) => q.id === b.quadrant)) throw new Error(`${b.id}: unknown quadrant ${b.quadrant}`);
+    if (!RINGS.some((r) => r.id === b.ring)) throw new Error(`${b.id}: unknown ring ${b.ring}`);
+    if (b.severity && b.quadrant !== "conditions") console.warn(`${b.id}: severity is only meant for Conditions blips`);
+    if ((b.sources?.length ?? 0) < 2) console.warn(`${b.id}: fewer than 2 sources (editorial bar)`);
+  }
+}
+
+export function esc(s: unknown): string {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
+}

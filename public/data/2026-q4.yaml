@@ -1,0 +1,732 @@
+# Environmental Supply Chain Radar: edition data (single source of truth)
+# Schema: Obsidian WALTER/prototypes/Blip schema v0.1 - prototype.md
+# PROTOTYPE: 5 blips have content (R1, R15, I1, I4, I5); the other 24 are draft stubs from the agreed cut.
+# Content & data: CC BY 4.0
+
+edition:
+  id: 2026-q4
+  label: 2026 Q4 · v0.1
+  published: null
+  status: prototype
+blips:
+- id: rules-eudr
+  name: EU Deforestation Regulation (EUDR)
+  quadrant: rules
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E5
+  severity: null
+  dominant_clock: political
+  scope:
+    commodities: &id001
+    - soy
+    - cocoa
+    - coffee
+    - palm-oil
+    - cattle
+    issues:
+    - forests-land
+    origins:
+      political: []
+      ecological: []
+    horizon:
+    - now
+  summary: Applies from 30 Dec 2026 to large and medium operators; geolocation and due-diligence statements become
+    a condition of EU market access.
+  rationale: 'After two postponements and a 2026 simplification review that left the core text intact, the EUDR
+    applies to large and medium operators from 30 December 2026 and to other micro and small operators from 30 June
+    2027. For a procurement lead sourcing soy, cocoa, coffee, palm oil or cattle into the EU, this is no longer
+    a scenario but an operating condition: plot-level geolocation and due-diligence statements are table stakes.
+    Scope keeps moving at the edges. Delegated Regulation (EU) 2026/2102 removes leather and hides, and adds soluble
+    coffee, some palm-oil derivatives and frozen cattle tongues from 30 December 2027. Treat those as a watch item,
+    not a reason to wait.'
+  actions:
+  - Confirm geolocation coverage per commodity × origin before 30 Dec 2026.
+  - Map which suppliers and SKUs are hit by the 2027 scope additions.
+  sources:
+  - title: Regulation on deforestation-free products
+    url: https://environment.ec.europa.eu/topics/forests/deforestation/regulation-deforestation-free-products_en
+    publisher: European Commission
+    type: primary
+    accessed: '2026-09-23'
+  - title: Commission updates product scope and tools to support EUDR (13 Jul 2026)
+    url: https://environment.ec.europa.eu/news/commission-updates-product-scope-and-tools-support-eudr-2026-07-13_en
+    publisher: European Commission
+    type: primary
+    accessed: '2026-09-23'
+  - title: Delegated Regulation (EU) 2026/2102 (Annex I scope)
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202602102
+    publisher: EUR-Lex
+    type: primary
+    accessed: '2026-09-23'
+  related:
+  - rules-eudr-country-benchmark
+  - intelligence-gfw-pro
+  - responses-plot-geolocation-traceability
+  lifecycle:
+    since: '2023-06-29'
+    until: null
+    first_edition: 2026-q4
+  events:
+  - date: '2025-12-26'
+    type: amendment
+    summary: 'Reg. (EU) 2025/2650 in force: second delay and simplified DDS chain.'
+    affects:
+    - lifecycle
+  - date: '2026-05-04'
+    type: evidence
+    summary: 'Simplification review (COM(2026)191): core text not reopened.'
+    affects:
+    - ring
+  - date: '2026-07-13'
+    type: amendment
+    summary: Delegated Reg. (EU) 2026/2102 changes the product scope (additions apply from 30 Dec 2027).
+    affects:
+    - scope
+  - date: '2026-12-30'
+    type: milestone
+    summary: Applies to large and medium operators.
+    affects:
+    - ring
+  - date: '2027-06-30'
+    type: milestone
+    summary: Applies to other micro and small operators.
+- id: rules-esrs-2026-e3-e4
+  name: 'ESRS (2026): E3 Water & E4 Biodiversity'
+  quadrant: rules
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E5
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: rules-csddd
+  name: CSDDD after Omnibus I
+  quadrant: rules
+  ring: assess
+  movement: new
+  previous_ring: null
+  evidence: E5
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: rules-eu-batteries-dd
+  name: EU Batteries Regulation due diligence
+  quadrant: rules
+  ring: assess
+  movement: new
+  previous_ring: null
+  evidence: E5
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: rules-issb-nature-ed
+  name: ISSB nature-related Practice Statement (ED)
+  quadrant: rules
+  ring: assess
+  movement: new
+  previous_ring: null
+  evidence: E2
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: rules-sbtn-land-freshwater
+  name: SBTN land & freshwater targets (V2)
+  quadrant: rules
+  ring: trial
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: rules-legality-only-soy-benchmarks
+  name: Legality-only soy benchmarks (Brazil–China soy guide)
+  quadrant: rules
+  ring: caution
+  movement: new
+  previous_ring: null
+  evidence: E2
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: rules-eudr-country-benchmark
+  name: EUDR country benchmark as primary risk input
+  quadrant: rules
+  ring: caution
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  dominant_clock: political
+  scope:
+    commodities: *id001
+    issues:
+    - forests-land
+    origins:
+      political: []
+      ecological: []
+    horizon:
+    - now
+  summary: The EUDR country risk list is a compliance tier, not a risk assessment. It will not be updated before
+    the EUDR applies.
+  rationale: Implementing Regulation (EU) 2025/1093 classes only four countries as high risk and most producing
+    countries (e.g. Brazil, Indonesia, Côte d'Ivoire) as standard. The Commission has said the list will not be
+    updated before the EUDR applies on 30 December 2026. The tier decides how much due diligence the law requires.
+    It says nothing about the deforestation or conversion risk in a specific landscape or supply shed. Using it
+    as the main risk signal hides the subnational differences that decide real exposure.
+  actions:
+  - Use the country tier only for the legal due-diligence level; screen risk at landscape or plot level.
+  sources:
+  - title: Implementing Regulation (EU) 2025/1093 (country classification)
+    url: https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32025R1093
+    publisher: EUR-Lex
+    type: primary
+    accessed: '2026-09-23'
+  - title: Multi-Stakeholder Platform on Deforestation, 41st meeting summary (8 May 2026)
+    url: https://ec.europa.eu/transparency/expert-groups-register/core/api/front/document/135985/download
+    publisher: European Commission
+    type: primary
+    accessed: '2026-09-23'
+  - title: EUDR simplification review, COM(2026)191
+    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0191
+    publisher: European Commission
+    type: primary
+    accessed: '2026-09-23'
+  related:
+  - rules-eudr
+  - intelligence-plot-level-satellite-monitoring
+  lifecycle:
+    since: '2025-05-26'
+    until: null
+    first_edition: 2026-q4
+  events:
+  - date: '2025-05-23'
+    type: release
+    summary: First country classification published (Impl. Reg. 2025/1093).
+  - date: '2026-05-08'
+    type: evidence
+    summary: 'Commission: benchmarking will not be updated before EUDR application.'
+    affects:
+    - ring
+- id: conditions-soy-frontier-conversion
+  name: Forest & savanna conversion on the soy frontier
+  quadrant: conditions
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: high
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: conditions-cattle-deforestation
+  name: Cattle-driven deforestation
+  quadrant: conditions
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: high
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: conditions-cocoa-forest-loss
+  name: Cocoa-driven forest loss and protected-area encroachment
+  quadrant: conditions
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: high
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: conditions-palm-peat-conversion
+  name: Palm-oil-driven peat and forest conversion
+  quadrant: conditions
+  ring: trial
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: medium
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: conditions-water-stress-copper-lithium-basins
+  name: Water stress in copper and lithium basins
+  quadrant: conditions
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: high
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: conditions-arabica-climate-suitability
+  name: Shifting climate suitability for arabica coffee (to 2030)
+  quadrant: conditions
+  ring: assess
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: high
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: intelligence-wri-aqueduct
+  name: WRI Aqueduct 4.0
+  quadrant: intelligence
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  dominant_clock: natural
+  scope:
+    commodities:
+    - copper
+    - lithium
+    - coffee
+    - soy
+    issues:
+    - water
+    origins:
+      political: []
+      ecological: []
+    horizon:
+    - now
+    - '2030'
+  uncertainty:
+    spatial_resolution: sub-basin
+    attribution_confidence: null
+  summary: Free, sub-basin water-risk data with 2030 projections; the default starting point for basin screening.
+  rationale: 'Aqueduct 4.0 gives baseline and projected water stress at sub-basin level, is free and openly licensed
+    (CC BY 4.0), and is already the reference in many corporate and investor water-risk methods. For a procurement
+    lead that makes it the obvious first screen for sourcing basins, especially for copper and lithium in arid regions.
+    It is a screen, not a site assessment: sub-basin indicators do not capture local water rights or a specific
+    mine''s water balance.'
+  actions:
+  - Screen your top sourcing origins by Aqueduct baseline water stress and the 2030 projection.
+  sources:
+  - title: Aqueduct
+    url: https://www.wri.org/aqueduct
+    publisher: World Resources Institute
+    type: dataset
+    accessed: '2026-09-23'
+  - title: Aqueduct Water Risk Atlas
+    url: https://www.wri.org/applications/aqueduct/water-risk-atlas/
+    publisher: World Resources Institute
+    type: dataset
+    accessed: '2026-09-23'
+  related:
+  - conditions-water-stress-copper-lithium-basins
+  - responses-basin-level-screening
+  lifecycle:
+    since: '2023-08-16'
+    until: null
+    first_edition: 2026-q4
+  events:
+  - date: '2023-08-16'
+    type: release
+    summary: Aqueduct 4.0 released.
+- id: intelligence-trase
+  name: Trase supply-chain data
+  quadrant: intelligence
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: intelligence-ibat
+  name: IBAT (KBA, WDPA, Red List)
+  quadrant: intelligence
+  ring: trial
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: intelligence-gfw-pro
+  name: GFW Pro
+  quadrant: intelligence
+  ring: caution
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  dominant_clock: business
+  scope:
+    commodities: *id001
+    issues:
+    - forests-land
+    origins:
+      political: []
+      ecological: []
+    horizon:
+    - now
+  summary: WRI's free deforestation-monitoring app retires on 31 Dec 2026, the day after the EUDR applies.
+  rationale: 'GFW Pro has been a widely used free tool for monitoring deforestation in supply sheds and portfolios.
+    WRI will retire the web app and API on 31 December 2026 and fold it into Global Nature Watch. Any EUDR due-diligence
+    workflow that depends on it needs a migration plan now, because the retirement lands one day after the regulation
+    applies to large and medium operators. That is why it sits in CAUTION: the tool is not wrong, but relying on
+    it past 2026 is.'
+  actions:
+  - Inventory EUDR workflows and reports that depend on GFW Pro; plan the migration in Q4 2026.
+  sources:
+  - title: GFW Pro
+    url: https://pro.globalforestwatch.org/
+    publisher: World Resources Institute
+    type: primary
+    accessed: '2026-09-23'
+  - title: About GFW Pro
+    url: https://pro.globalforestwatch.org/about
+    publisher: World Resources Institute
+    type: primary
+    accessed: '2026-09-23'
+  related:
+  - intelligence-global-nature-watch
+  - rules-eudr
+  lifecycle:
+    since: null
+    until: '2026-12-31'
+    first_edition: 2026-q4
+  events:
+  - date: '2026-12-31'
+    type: retirement
+    summary: Web app and API retire; users move to Global Nature Watch.
+    affects:
+    - ring
+    - lifecycle
+- id: intelligence-global-nature-watch
+  name: Global Nature Watch (GFW Pro successor)
+  quadrant: intelligence
+  ring: assess
+  movement: new
+  previous_ring: null
+  evidence: E2
+  severity: null
+  dominant_clock: business
+  scope:
+    commodities: *id001
+    issues:
+    - forests-land
+    - biodiversity
+    origins:
+      political: []
+      ecological: []
+    horizon:
+    - now
+  summary: WRI's successor platform to GFW Pro; GNW Horizon is free and in preview, with EUDR dashboards announced.
+  rationale: 'Global Nature Watch is where GFW Pro users are being moved. GNW Horizon is free and in preview, and
+    EUDR and AFi dashboards have been announced but are not yet proven in operational due diligence. It is worth
+    a structured look now, because the switch is forced by the end of 2026, but it has not earned TRIAL yet: capabilities
+    and continuity for existing GFW Pro workflows still need to be confirmed.'
+  actions:
+  - Evaluate GNW Horizon against your current GFW Pro use before Q4 2026 ends; set a decision date.
+  sources:
+  - title: About GFW Pro (retirement and transition to Global Nature Watch)
+    url: https://pro.globalforestwatch.org/about
+    publisher: World Resources Institute
+    type: primary
+    accessed: '2026-09-23'
+  related:
+  - intelligence-gfw-pro
+  - intelligence-plot-level-satellite-monitoring
+  lifecycle:
+    since: null
+    until: null
+    first_edition: 2026-q4
+  events: []
+- id: intelligence-plot-level-satellite-monitoring
+  name: Plot-level satellite deforestation monitoring (as a category)
+  quadrant: intelligence
+  ring: trial
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: intelligence-supplier-ratings-as-env-signal
+  name: Supplier sustainability ratings as an environmental signal (EcoVadis-type)
+  quadrant: intelligence
+  ring: caution
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: intelligence-opaque-ai-biodiversity-scores
+  name: Opaque AI biodiversity risk scores
+  quadrant: intelligence
+  ring: caution
+  movement: new
+  previous_ring: null
+  evidence: E1
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-plot-geolocation-traceability
+  name: Plot-level geolocation & traceability
+  quadrant: responses
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-tnfd-leap
+  name: TNFD LEAP assessment method
+  quadrant: responses
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-basin-level-screening
+  name: Basin-level screening of sourcing
+  quadrant: responses
+  ring: adopt
+  movement: new
+  previous_ring: null
+  evidence: E4
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-landscape-jurisdictional-approaches
+  name: Landscape / jurisdictional approaches
+  quadrant: responses
+  ring: trial
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-cattle-indirect-supplier-monitoring
+  name: Indirect-supplier monitoring in cattle chains
+  quadrant: responses
+  ring: trial
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-climate-suitability-scenarios
+  name: Climate-suitability scenario analysis for sourcing
+  quadrant: responses
+  ring: assess
+  movement: new
+  previous_ring: null
+  evidence: E2
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true
+- id: responses-certification-as-sole-dd-evidence
+  name: Certification as sole EUDR due-diligence evidence
+  quadrant: responses
+  ring: caution
+  movement: new
+  previous_ring: null
+  evidence: E3
+  severity: null
+  scope:
+    commodities: []
+    issues: []
+    horizon:
+    - now
+  summary: 'Draft stub: content comes in E3 (THI-97).'
+  rationale: Placeholder. Ring and evidence are the hunches from the agreed v0.1 cut, not final editorial decisions.
+  actions: []
+  sources: []
+  draft: true

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Environmental Supply Chain Radar — print</title>
+    <link rel="icon" type="image/png" href="/tetrahedron.png" />
+  </head>
+  <body class="print-body">
+    <div id="app-error" role="alert"></div>
+    <p class="no-print placeholder" style="margin: 16px">
+      Print view. Use the browser's print dialog (A4) or <code>npm run pdf</code> to export a vector PDF.
+      <a href="/">← back to the radar</a>
+    </p>
+
+    <div class="sheet">
+      <section class="print-cover">
+        <div class="cover-head">
+          <span class="logo" role="img" aria-label="This Hollow Earth"></span>
+          <div>
+            <h1>Environmental Supply Chain Radar</h1>
+            <div>What changed. Where it matters. What to do next.</div>
+          </div>
+          <span class="edition" style="margin-left: auto"></span>
+        </div>
+        <svg id="radar" role="img" aria-label="Radar"></svg>
+        <section class="legend" id="legend"></section>
+      </section>
+
+      <section class="print-section">
+        <h2 class="q-title">Why these blips</h2>
+        <div class="placeholder">Placeholder: editorial introduction to v0.1 (E3).</div>
+      </section>
+
+      <div id="blips"></div>
+
+      <section class="print-section">
+        <h2 class="q-title">Regulation Watch</h2>
+        <div class="placeholder">Placeholder: regulatory timeline (from the Rules blips and THI-81 / THI-93).</div>
+        <h2 class="q-title">Landscape Watch</h2>
+        <div class="placeholder">Placeholder: 2–3 worked landscapes (E4).</div>
+        <h2 class="q-title">How we think</h2>
+        <div class="placeholder">Placeholder: clocks and Landscape Tension (E5).</div>
+        <h2 class="q-title">Methodology &amp; independence</h2>
+        <div class="placeholder">Placeholder: see methodology.html / independence.html (E5).</div>
+      </section>
+
+      <section class="print-section">
+        <h2 class="q-title">Action guide</h2>
+        <div class="placeholder">Generated from each blip's actions. The per-role grouping comes later.</div>
+        <div id="actions"></div>
+      </section>
+
+      <section class="print-section">
+        <h2 class="q-title">Work with us</h2>
+        <p>This Hollow Earth helps organisations turn environmental intelligence into organisational and supply-chain decisions. <a href="https://thishollow.earth">thishollow.earth</a></p>
+        <p><small>Not legal or investment advice. Content and data licensed CC BY 4.0.</small></p>
+      </section>
+    </div>
+
+    <script type="module" src="/src/print.ts"></script>
+  </body>
+</html>

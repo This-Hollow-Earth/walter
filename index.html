@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Environmental Supply Chain Radar</title>
+    <meta name="description" content="What changed. Where it matters. What to do next. A recurring, evidence-linked radar on environmental supply-chain risk." />
+    <link rel="icon" type="image/png" href="/tetrahedron.png" />
+  </head>
+  <body>
+    <header class="site-header">
+      <span class="logo" role="img" aria-label="This Hollow Earth tetrahedron logo"></span>
+      <div class="title">
+        <h1>Environmental Supply Chain Radar</h1>
+        <span class="tagline">What changed. Where it matters. What to do next.</span>
+      </div>
+      <span class="edition" id="edition"></span>
+      <nav>
+        <a href="/" aria-current="page">Radar</a>
+        <a href="/methodology.html">Methodology</a>
+        <a href="/independence.html">Independence</a>
+        <a href="/print.html">Print / PDF</a>
+      </nav>
+    </header>
+
+    <div id="app-error" role="alert"></div>
+
+    <form class="filters" onsubmit="return false">
+      <label>Commodity <select id="f-commodity"></select></label>
+      <label>Origin <select id="f-origin"></select></label>
+      <label>Issue <select id="f-issue"></select></label>
+      <label>Ring <select id="f-ring"></select></label>
+      <button type="button" id="f-reset">Reset</button>
+      <span id="count"></span>
+    </form>
+
+    <main class="layout">
+      <div class="radar-wrap">
+        <svg id="radar" role="img" aria-label="Radar with four quadrants and four rings"></svg>
+      </div>
+      <aside id="detail" aria-live="polite"></aside>
+    </main>
+
+    <section class="legend" id="legend" aria-label="Legend"></section>
+
+    <footer class="site-footer">
+      <span>by This Hollow Earth</span>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <span>Content &amp; data: CC BY 4.0</span>
+      <span>★ new · ▲ moved in · ▼ moved out · ● no change</span>
+      <a href="https://thishollow.earth">Work with us →</a>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
