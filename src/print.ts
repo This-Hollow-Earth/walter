@@ -21,7 +21,7 @@ async function main() {
     paper: PAPER,
     animate: false,
   });
-  document.querySelector("#legend")!.innerHTML = legendHTML(blips, nums, () => true, null);
+  document.querySelector("#legend")!.innerHTML = legendHTML(blips, nums, () => true, byId, null);
 
   const sorted = [...blips].sort((a, b) => nums.get(a.id)! - nums.get(b.id)!);
   document.querySelector("#blips")!.innerHTML = QUADRANTS.map((q) => {

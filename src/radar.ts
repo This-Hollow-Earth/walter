@@ -31,6 +31,9 @@ export interface RadarConfig {
   paper: string;
   selected?: string | null;
   onSelect?: (key: string) => void;
+  onSelectQuadrant?: (quadrant: Quadrant) => void;
+  /** When set, the view zooms into this quadrant (Thoughtworks-radar style drill-down). */
+  zoomedQuadrant?: Quadrant | null;
   animate?: boolean; // false = run the force layout synchronously (print)
 }
 
@@ -109,7 +112,17 @@ export function renderRadar(config: RadarConfig): void {
 
   const svg = d3.select(config.svg);
   svg.selectAll("*").remove();
-  svg.attr("viewBox", "-440 -440 880 880").attr("preserveAspectRatio", "xMidYMid meet").style("background-color", paper);
+  const zoomed = config.zoomedQuadrant;
+  const viewBox =
+    zoomed == null
+      ? "-440 -440 880 880"
+      : [
+          Math.max(0, QUADRANTS[zoomed].factor_x * 400) - 420,
+          Math.max(0, QUADRANTS[zoomed].factor_y * 400) - 420,
+          440,
+          440,
+        ].join(" ");
+  svg.attr("viewBox", viewBox).attr("preserveAspectRatio", "xMidYMid meet").style("background-color", paper);
 
   const rc = rough.svg(config.svg);
   const line = { stroke: ink, strokeWidth: 1, roughness: 0.9, bowing: 0.6 };
@@ -120,13 +133,23 @@ export function renderRadar(config: RadarConfig): void {
   // axes
   gridNode.appendChild(rc.line(0, -400, 0, 400, { ...line, seed: 1 }));
   gridNode.appendChild(rc.line(-400, 0, 400, 0, { ...line, seed: 2 }));
-  // rings (labels just inside each ring's outer edge, on the vertical axis, with a paper halo)
+  // rings. Label placement: overview puts labels on the top axis (shared border of quadrants 2/3,
+  // both visible); zoomed view puts them on the diagonal into the visible quadrant, so they aren't
+  // clipped by the viewBox edge.
+  const labelPos = (r: number): Point => {
+    if (zoomed == null) return { x: 0, y: -r + 16 };
+    const q = QUADRANTS[zoomed];
+    const d = (r - (r > 30 ? 16 : 0)) * Math.SQRT1_2;
+    return { x: d * q.factor_x, y: d * q.factor_y };
+  };
   RINGS.forEach((ring, i) => {
     gridNode.appendChild(rc.circle(0, 0, ring.radius * 2, { ...line, seed: 10 + i }));
+    const pos = labelPos(ring.radius);
     grid
       .append("text")
       .text(config.rings[i].name)
-      .attr("y", -ring.radius + 16)
+      .attr("x", pos.x)
+      .attr("y", pos.y)
       .attr("text-anchor", "middle")
       .attr("class", "ring-label")
       .style("fill", ink)
@@ -134,23 +157,34 @@ export function renderRadar(config: RadarConfig): void {
       .style("stroke-width", 5)
       .style("paint-order", "stroke");
   });
-  // quadrant labels in the corners
+  // quadrant labels in the corners (clickable to drill in, when viewing the full radar)
   const qpos: Record<Quadrant, { x: number; y: number; anchor: string }> = {
     0: { x: 425, y: 428, anchor: "end" },
     1: { x: -425, y: 428, anchor: "start" },
     2: { x: -425, y: -414, anchor: "start" },
     3: { x: 425, y: -414, anchor: "end" },
   };
-  ([0, 1, 2, 3] as Quadrant[]).forEach((q) => {
-    grid
-      .append("text")
-      .text(config.quadrants[q].name)
-      .attr("x", qpos[q].x)
-      .attr("y", qpos[q].y)
-      .attr("text-anchor", qpos[q].anchor)
-      .attr("class", "quadrant-label")
-      .style("fill", ink);
-  });
+  if (zoomed == null) {
+    ([0, 1, 2, 3] as Quadrant[]).forEach((q) => {
+      grid
+        .append("text")
+        .text(config.quadrants[q].name)
+        .attr("x", qpos[q].x)
+        .attr("y", qpos[q].y)
+        .attr("text-anchor", qpos[q].anchor)
+        .attr("class", "quadrant-label" + (config.onSelectQuadrant ? " clickable" : ""))
+        .attr("tabindex", config.onSelectQuadrant ? 0 : null)
+        .attr("role", config.onSelectQuadrant ? "button" : null)
+        .style("fill", ink)
+        .on("click", () => config.onSelectQuadrant?.(q))
+        .on("keydown", (ev: KeyboardEvent) => {
+          if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            config.onSelectQuadrant?.(q);
+          }
+        });
+    });
+  }
 
   // blips
   const rink = radar.append("g").attr("class", "rink");
@@ -179,12 +213,15 @@ export function renderRadar(config: RadarConfig): void {
     if (d.key === config.selected) {
       g.appendChild(rc.circle(0, 0, 38, { stroke: ink, strokeWidth: 2.2, roughness: 1.4, seed: 900 + i }));
     }
+    // Every blip is a plain outlined circle with its number in it. Movement
+    // (in/out) is the only shape variant, via a triangle; "new" and "no
+    // change" both use the same circle for now — future blip features can
+    // layer onto this circle (border weight/dash, a small badge) without
+    // introducing more base shapes.
     if (d.moved === 1) {
       g.appendChild(rc.polygon([[-11, 6], [11, 6], [0, -13]], shape));
     } else if (d.moved === -1) {
       g.appendChild(rc.polygon([[-11, -6], [11, -6], [0, 13]], shape));
-    } else if (d.moved === 2) {
-      g.appendChild(rc.polygon(starPoints(17, 9), shape));
     } else {
       g.appendChild(rc.circle(0, 0, 20, shape));
     }
@@ -209,14 +246,4 @@ export function renderRadar(config: RadarConfig): void {
     for (let i = 0; i < 300; i++) sim.tick();
     ticked();
   }
-}
-
-function starPoints(outer: number, inner: number): [number, number][] {
-  const pts: [number, number][] = [];
-  for (let i = 0; i < 10; i++) {
-    const r = i % 2 === 0 ? outer : inner;
-    const a = -Math.PI / 2 + (i * Math.PI) / 5;
-    pts.push([r * Math.cos(a), r * Math.sin(a)]);
-  }
-  return pts;
 }

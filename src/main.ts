@@ -1,21 +1,37 @@
 import "./style.css";
-import type { Blip } from "./types";
-import { RINGS } from "./types";
-import { INK, PAPER, esc, loadEdition, numbered, quadrantNamesByIndex, ringNames, toEntries } from "./data";
+import type { Blip, QuadrantId } from "./types";
+import { QUADRANTS, RINGS } from "./types";
+import { INK, PAPER, esc, loadEdition, numbered, quadrantByScreenIndex, quadrantNamesByIndex, ringNames, toEntries } from "./data";
 import { renderRadar } from "./radar";
-import { detailHTML, editionLabel, legendHTML } from "./views";
+import type { Quadrant } from "./radar";
+import { editionLabel, legendHTML, quadrantListHTML } from "./views";
 
 type FilterKey = "commodity" | "origin" | "issue" | "ring";
 const filters: Record<FilterKey, string> = { commodity: "", origin: "", issue: "", ring: "" };
 
 const $ = <T extends Element>(sel: string) => document.querySelector<T>(sel)!;
+const QUADRANT_IDS = new Set<string>(QUADRANTS.map((q) => q.id));
+
+interface ViewState {
+  quadrant: QuadrantId | null; // null = full radar overview (all 4 quadrants)
+  blip: string | null; // the blip expanded in place, in the quadrant list or the overview legend
+}
+
+/** "#<quadrant>/<blip>" when zoomed with a blip open, "#<quadrant>" when zoomed,
+ * bare "#<blip>" on the overview with a blip expanded, "#" otherwise. */
+function hashFor(s: ViewState): string {
+  if (s.quadrant && s.blip) return `#${s.quadrant}/${s.blip}`;
+  if (s.quadrant) return `#${s.quadrant}`;
+  if (s.blip) return `#${s.blip}`;
+  return "#";
+}
 
 async function main() {
   const ed = await loadEdition();
   const blips = ed.blips;
   const nums = numbered(blips);
   const byId = new Map(blips.map((b) => [b.id, b]));
-  let selected: string | null = null;
+  let state: ViewState = { quadrant: null, blip: null };
 
   $("#edition").innerHTML = editionLabel(ed);
 
@@ -51,14 +67,35 @@ async function main() {
     (!filters.issue || b.scope.issues.includes(filters.issue)) &&
     (!filters.ring || b.ring === filters.ring);
 
-  const select = (key: string | null) => {
-    selected = key && byId.has(key) ? key : null;
-    if (selected && location.hash !== `#${selected}`) history.replaceState(null, "", `#${selected}`);
-    if (!selected && location.hash) history.replaceState(null, "", location.pathname);
+  /**
+   * Parse the hash into a ViewState. Formats: "", "<blipId>" (overview,
+   * expanded in its own quadrant column), "<quadrantId>" (zoomed),
+   * "<quadrantId>/<blipId>" (zoomed, expanded).
+   */
+  function parseHash(): ViewState {
+    const raw = location.hash.slice(1);
+    if (!raw) return { quadrant: null, blip: null };
+    const [a, b] = raw.split("/");
+    if (QUADRANT_IDS.has(a)) return { quadrant: a as QuadrantId, blip: b && byId.has(b) ? b : null };
+    if (byId.has(a)) return { quadrant: null, blip: a };
+    return { quadrant: null, blip: null };
+  }
+
+  function go(next: ViewState) {
+    state = next;
+    const h = hashFor(state);
+    if (location.hash !== h) history.pushState(null, "", h === "#" ? location.pathname : h);
     render();
-  };
+  }
+
+  const selectBlip = (key: string | null) => go({ quadrant: state.quadrant, blip: key });
+  const selectQuadrant = (screenIndex: Quadrant) => go({ quadrant: quadrantByScreenIndex(screenIndex).id, blip: null });
+  const backToOverview = () => go({ quadrant: null, blip: null });
+  const backToQuadrant = () => go({ quadrant: state.quadrant, blip: null });
+  const enterAndSelect = (q: QuadrantId, blip: string) => go({ quadrant: q, blip });
 
   function render() {
+    const zoomedIdx = state.quadrant ? (QUADRANTS.find((q) => q.id === state.quadrant)!.index as Quadrant) : null;
     renderRadar({
       svg: $<SVGSVGElement>("#radar"),
       quadrants: quadrantNamesByIndex(),
@@ -66,29 +103,81 @@ async function main() {
       entries: toEntries(blips, nums, active),
       ink: INK,
       paper: PAPER,
-      selected,
-      onSelect: select,
+      selected: state.blip,
+      onSelect: selectBlip,
+      onSelectQuadrant: state.quadrant ? undefined : selectQuadrant,
+      zoomedQuadrant: zoomedIdx,
     });
-    $("#legend").innerHTML = legendHTML(blips, nums, active, selected);
+
+    // breadcrumb: Radar / Quadrant [/ Blip name] — only appears once zoomed into a quadrant
+    const breadcrumb = $("#breadcrumb");
+    if (state.quadrant) {
+      const qname = QUADRANTS.find((q) => q.id === state.quadrant)!.name;
+      breadcrumb.innerHTML =
+        `<button type="button" data-nav="overview">Radar</button> <span class="sep">/</span> ` +
+        (state.blip
+          ? `<button type="button" data-nav="quadrant">${esc(qname)}</button> <span class="sep">/</span> <span>${esc(byId.get(state.blip)?.name ?? "")}</span>`
+          : `<span>${esc(qname)}</span>`);
+    } else {
+      breadcrumb.innerHTML = "";
+    }
+
+    // side panel: only used when zoomed into a quadrant (single-column list, blip expands in place)
+    const side = $<HTMLElement>("#side");
+    document.body.classList.toggle("zoomed", !!state.quadrant);
+    if (state.quadrant) {
+      side.style.display = "";
+      side.innerHTML = quadrantListHTML(state.quadrant, blips, nums, active, byId, state.blip);
+      side.className = "quadrant-panel" + (state.blip ? " has-expanded" : "");
+    } else {
+      side.style.display = "none";
+      side.innerHTML = "";
+    }
+
+    // full-width legend: overview only (all 4 quadrant columns); same expand-in-place behaviour
+    const legend = $<HTMLElement>("#legend");
+    legend.style.display = state.quadrant ? "none" : "";
+    if (!state.quadrant) legend.innerHTML = legendHTML(blips, nums, active, byId, state.blip);
+
     const n = blips.filter(active).length;
     $("#count").textContent = `${n} of ${blips.length} blips`;
-    const panel = $("#detail");
-    panel.innerHTML = selected
-      ? `<button class="close" id="close" aria-label="Close">×</button>` + detailHTML(byId.get(selected)!, nums.get(selected), byId, nums)
-      : `<p class="hint">Select a blip on the radar or in the legend to see why it sits in its ring, what to do, and the sources.</p>`;
-    $("#close")?.addEventListener("click", () => select(null));
+
+    // scroll whichever expanded card exists into view
+    document.querySelector(".expanded")?.scrollIntoView({ block: "nearest" });
   }
 
-  // delegated clicks for legend / related links
+  // delegated clicks: legend rows, quadrant-list rows, related links, and nav buttons
   document.addEventListener("click", (ev) => {
+    const nav = (ev.target as Element).closest<HTMLButtonElement>("button[data-nav]");
+    if (nav) {
+      ev.preventDefault();
+      if (nav.dataset.nav === "overview") backToOverview();
+      else backToQuadrant(); // also handles "collapse this expanded row" in both overview and zoomed contexts
+      return;
+    }
     const a = (ev.target as Element).closest<HTMLAnchorElement>("a[data-key]");
     if (!a) return;
     ev.preventDefault();
-    select(a.dataset.key!);
+    const targetId = a.dataset.key!;
+    const target = byId.get(targetId);
+    if (a.dataset.quadrant) {
+      // a zoomed quadrant-list row: enter/stay in that quadrant and expand the blip
+      enterAndSelect(a.dataset.quadrant as QuadrantId, targetId);
+    } else if (state.quadrant && target && target.quadrant !== state.quadrant) {
+      // a "related" link, while zoomed, that crosses into a different quadrant
+      enterAndSelect(target.quadrant, targetId);
+    } else {
+      // overview legend rows, and related links that stay within the current context
+      selectBlip(targetId);
+    }
   });
-  window.addEventListener("hashchange", () => select(location.hash.slice(1) || null));
 
-  selected = byId.has(location.hash.slice(1)) ? location.hash.slice(1) : null;
+  window.addEventListener("popstate", () => {
+    state = parseHash();
+    render();
+  });
+
+  state = parseHash();
   render();
 }
 

@@ -77,7 +77,7 @@ export const EVIDENCE: Record<Evidence, string> = {
 };
 
 export const MOVEMENT: Record<Movement, { label: string; symbol: string }> = {
-  new: { label: "New", symbol: "★" },
+  new: { label: "New", symbol: "◉" },
   in: { label: "Moved in", symbol: "▲" },
   out: { label: "Moved out", symbol: "▼" },
   none: { label: "No change", symbol: "●" },

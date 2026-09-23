@@ -46,6 +46,11 @@ export function quadrantNamesByIndex(): { name: string }[] {
   return names;
 }
 
+/** Find the QuadrantId whose screen position (radar.js index) matches `index`. */
+export function quadrantByScreenIndex(index: number) {
+  return QUADRANTS.find((q) => q.index === index)!;
+}
+
 export const ringNames = () => RINGS.map((r) => ({ name: r.name }));
 
 function validate(data: Edition): void {

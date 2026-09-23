@@ -4,28 +4,94 @@ import { esc } from "./data";
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
-/** Legend: four quadrant columns, grouped by ring, numbered like the radar. */
-export function legendHTML(blips: Blip[], nums: Map<string, number>, active: (b: Blip) => boolean, selected: string | null): string {
+/**
+ * Full legend: all four quadrant columns, grouped by ring, numbered like the
+ * radar. Same list-and-expand behaviour as the single-quadrant drill-down
+ * (quadrantListHTML): when `expandedId` is set, that blip's row expands in
+ * place into its full detail card within its own quadrant's column, while
+ * every other blip stays visible as a compact row. Row links are bare
+ * `#<blipId>` (no quadrant prefix) so clicking one expands in place on the
+ * overview rather than zooming into a quadrant.
+ */
+export function legendHTML(
+  blips: Blip[],
+  nums: Map<string, number>,
+  active: (b: Blip) => boolean,
+  byId: Map<string, Blip>,
+  expandedId: string | null,
+): string {
   return QUADRANTS.map((q) => {
     const rings = RINGS.map((r) => {
       const items = blips
         .filter((b) => b.quadrant === q.id && b.ring === r.id)
         .sort((a, b) => nums.get(a.id)! - nums.get(b.id)!);
       if (!items.length) return "";
-      return `<h4>${r.name}</h4><ol>${items
-        .map(
-          (b) =>
-            `<li class="${active(b) ? "" : "inactive"} ${b.id === selected ? "selected" : ""}">` +
-            `<a href="#${esc(b.id)}" data-key="${esc(b.id)}"><span class="num">${nums.get(b.id)}</span> ${esc(b.name)}` +
-            ` <span class="mv" title="${MOVEMENT[b.movement].label}">${MOVEMENT[b.movement].symbol}</span></a></li>`,
-        )
+      return `<h4>${r.name}<small>${esc(r.meaning)}</small></h4><ol class="quadrant-list">${items
+        .map((b) => (b.id === expandedId ? expandedRow(b, nums, byId) : compactRow(b, null, nums, active, expandedId)))
         .join("")}</ol>`;
     }).join("");
     return `<section class="legend-q"><h3>${q.name}<small>${q.subtitle}</small></h3>${rings || '<p class="empty">No blips yet</p>'}</section>`;
   }).join("");
 }
 
-/** Full detail of one blip (side panel and print view). */
+/**
+ * Quadrant drill-down list (Thoughtworks-radar style): blip id, name and
+ * summary, grouped by ring, for the quadrant currently zoomed into.
+ * When `expandedId` matches a blip in this quadrant, that row expands
+ * in place into its full detail card; every other blip stays visible as a
+ * compact row so the surrounding numbers/names/summaries are never hidden.
+ */
+export function quadrantListHTML(
+  quadrantId: Blip["quadrant"],
+  blips: Blip[],
+  nums: Map<string, number>,
+  active: (b: Blip) => boolean,
+  byId: Map<string, Blip>,
+  expandedId: string | null,
+): string {
+  const q = QUADRANTS.find((x) => x.id === quadrantId)!;
+  const rings = RINGS.map((r) => {
+    const items = blips
+      .filter((b) => b.quadrant === quadrantId && b.ring === r.id)
+      .sort((a, b) => nums.get(a.id)! - nums.get(b.id)!);
+    if (!items.length) return "";
+    return `<h4>${r.name}<small>${esc(r.meaning)}</small></h4><ol class="quadrant-list">${items
+      .map((b) => (b.id === expandedId ? expandedRow(b, nums, byId) : compactRow(b, quadrantId, nums, active, expandedId)))
+      .join("")}</ol>`;
+  }).join("");
+  return `<div class="quadrant-header"><h2>${q.name}<small>${q.subtitle}</small></h2></div>${rings || '<p class="empty">No blips yet</p>'}`;
+}
+
+/**
+ * One compact row: id, name, one-line summary and the movement glyph.
+ * `quadrantId` set (zoomed list) -> link is `#<quadrant>/<blip>` and carries
+ * `data-quadrant`, so clicking it enters/stays in that quadrant's zoom.
+ * `quadrantId` null (overview legend) -> link is a bare `#<blip>`, so
+ * clicking it expands the row in place without zooming.
+ */
+function compactRow(
+  b: Blip,
+  quadrantId: Blip["quadrant"] | null,
+  nums: Map<string, number>,
+  active: (b: Blip) => boolean,
+  expandedId: string | null,
+): string {
+  const href = quadrantId ? `#${esc(quadrantId)}/${esc(b.id)}` : `#${esc(b.id)}`;
+  const dataQuadrant = quadrantId ? ` data-quadrant="${esc(quadrantId)}"` : "";
+  return (
+    `<li class="${active(b) ? "" : "inactive"}${expandedId ? " dimmed" : ""}">` +
+    `<a href="${href}" data-key="${esc(b.id)}"${dataQuadrant}>` +
+    `<span class="num">${nums.get(b.id)}</span>` +
+    `<span class="ql-body"><span class="ql-name">${esc(b.name)}</span><span class="ql-summary">${esc(b.summary)}</span></span>` +
+    `<span class="mv" title="${MOVEMENT[b.movement].label}">${MOVEMENT[b.movement].symbol}</span></a></li>`
+  );
+}
+
+function expandedRow(b: Blip, nums: Map<string, number>, byId: Map<string, Blip>): string {
+  return `<li class="expanded">` + `<button type="button" class="close" data-nav="quadrant" aria-label="Collapse">×</button>` + detailHTML(b, nums.get(b.id), byId, nums) + `</li>`;
+}
+
+/** Full detail of one blip (expanded row and print view). */
 export function detailHTML(b: Blip, num: number | undefined, byId: Map<string, Blip>, nums: Map<string, number>): string {
   const q = QUADRANTS.find((x) => x.id === b.quadrant)!;
   const r = RINGS.find((x) => x.id === b.ring)!;
