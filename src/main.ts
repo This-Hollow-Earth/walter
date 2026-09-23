@@ -122,22 +122,17 @@ async function main() {
       breadcrumb.innerHTML = "";
     }
 
-    // side panel: only used when zoomed into a quadrant (single-column list, blip expands in place)
+    // side panel: always visible, right column. Zoomed into a quadrant -> that quadrant's
+    // drill-down list; overview -> the full blip legend (all 4 quadrants stacked in one
+    // column). Same expand-in-place behaviour either way.
     const side = $<HTMLElement>("#side");
-    document.body.classList.toggle("zoomed", !!state.quadrant);
     if (state.quadrant) {
-      side.style.display = "";
-      side.innerHTML = quadrantListHTML(state.quadrant, blips, nums, active, byId, state.blip);
       side.className = "quadrant-panel" + (state.blip ? " has-expanded" : "");
+      side.innerHTML = quadrantListHTML(state.quadrant, blips, nums, active, byId, state.blip);
     } else {
-      side.style.display = "none";
-      side.innerHTML = "";
+      side.className = "legend" + (state.blip ? " has-expanded" : "");
+      side.innerHTML = legendHTML(blips, nums, active, byId, state.blip);
     }
-
-    // full-width legend: overview only (all 4 quadrant columns); same expand-in-place behaviour
-    const legend = $<HTMLElement>("#legend");
-    legend.style.display = state.quadrant ? "none" : "";
-    if (!state.quadrant) legend.innerHTML = legendHTML(blips, nums, active, byId, state.blip);
 
     const n = blips.filter(active).length;
     $("#count").textContent = `${n} of ${blips.length} blips`;

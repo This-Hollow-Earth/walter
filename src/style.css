@@ -52,14 +52,18 @@ h1, h2, h3, h4 { font-weight: 600; margin: 0; }
 .breadcrumb button { font: inherit; background: none; border: none; color: var(--ink); text-decoration: underline; cursor: pointer; padding: 0; }
 .breadcrumb .sep { color: var(--ink-soft); margin: 0 4px; }
 
-/* main layout: radar + side panel when zoomed into a quadrant; radar alone (full width) on overview */
+/* main layout: radar left, blip list right — always two columns. #side holds the
+   quadrant drill-down list when zoomed, or the full legend (all 4 quadrants stacked
+   in one column) on overview; only its content differs. */
 .layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr); gap: 0; }
-body:not(.zoomed) .layout { grid-template-columns: 1fr; }
 .radar-wrap { padding: 12px 20px; border-right: var(--line); }
-body:not(.zoomed) .radar-wrap { border-right: 0; }
 #radar { width: 100%; height: auto; max-height: 82vh; display: block; margin: 0 auto; }
-body:not(.zoomed) #radar { max-width: 820px; }
 #side { padding: 20px 28px; position: relative; max-height: calc(100vh - 150px); overflow: auto; }
+/* overview legend rendered into #side: stack the 4 quadrant sections in one column
+   instead of the 4-column grid print.html's top-level .legend still uses */
+#side.legend { display: block; border-top: 0; }
+#side .legend-q { border-right: 0; border-bottom: var(--dash); padding: 16px 0; }
+#side .legend-q:last-child { border-bottom: 0; }
 #side .hint { color: var(--ink-soft); border: var(--dash); padding: 16px; }
 
 /* quadrant drill-down panel and full-legend columns share the same list styling
@@ -107,7 +111,7 @@ body:not(.zoomed) #radar { max-width: 820px; }
 .legend-q .empty { font-size: 12px; color: var(--ink-soft); }
 /* when a blip in this column is expanded, let the column span the full row so the
    detail card (facts table, sources list) has room instead of squeezing into 1/4 width */
-.legend-q:has(.expanded) { grid-column: 1 / -1; border-right: 0; border-bottom: var(--dash); }
+.legend:not(#side) .legend-q:has(.expanded) { grid-column: 1 / -1; border-right: 0; border-bottom: var(--dash); }
 .num { display: inline-block; min-width: 1.6em; font-family: var(--mono); font-size: 11px; border: var(--line); border-radius: 50%; text-align: center; margin-right: 2px; }
 .num.big { font-size: 14px; min-width: 2em; padding: 3px 0; }
 .mv { font-size: 10px; }
