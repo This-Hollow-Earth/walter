@@ -1,10 +1,3 @@
-# Environmental Supply Chain Radar: PLACEHOLDER historical edition.
-# Reconstruction pending (THI-106+) -- blip content below is a COPY of 2026-Q4,
-# not real historical research. Do not treat rings/evidence/sources as accurate
-# for this quarter. Exists so the edition selector, Movers, and blip History views
-# are navigable ahead of Track B research landing.
-# Schema: Obsidian WALTER/prototypes/Blip schema v0.1 - prototype.md
-
 edition:
   id: 2025-q1
   label: 2025 Q1 (placeholder — reconstruction pending)
@@ -19,7 +12,7 @@ blips:
   severity: null
   dominant_clock: political
   scope:
-    commodities: &id001
+    commodities:
     - soy
     - cocoa
     - coffee
@@ -34,31 +27,31 @@ blips:
     - now
   summary: Applies from 30 Dec 2026 to large and medium operators; geolocation and due-diligence statements become a condition
     of EU market access.
-  rationale: 'After two postponements and a 2026 simplification review that left the core text intact, the EUDR applies
-    to large and medium operators from 30 December 2026 and to other micro and small operators from 30 June 2027. For a
-    procurement lead sourcing soy, cocoa, coffee, palm oil or cattle into the EU, this is no longer a scenario but an operating
-    condition: plot-level geolocation and due-diligence statements are table stakes. Scope keeps moving at the edges. Delegated
-    Regulation (EU) 2026/2102 removes leather and hides, and adds soluble coffee, some palm-oil derivatives and frozen cattle
-    tongues from 30 December 2027. Treat those as a watch item, not a reason to wait.'
+  rationale: ADOPT/E5 (unchanged ring, materially different date). The Council formally adopted a one-year postponement in
+    December 2024 (Reg. (EU) 2024/3234), so at 2025-Q1 EUDR applies from 30 December 2025 for large/medium operators — a full
+    year earlier than 2026-Q4's 30 December 2026 date (reflecting a second delay agreed December 2025, after this quarter).
+    The country benchmarking list (Impl. Reg. 2025/1093) had not yet been published — it came out 22 May 2025, in 2025-Q2
+    — so rules-eudr-country-benchmark correctly has no 2025-Q1 entry.
   actions:
   - Confirm geolocation coverage per commodity × origin before 30 Dec 2026.
   - Map which suppliers and SKUs are hit by the 2027 scope additions.
   sources:
-  - title: Regulation on deforestation-free products
+  - title: European Commission Proposes Further One-Year Delay to the EU Deforestation Regulation (background confirms Oct
+      2024 first delay)
+    url: https://www.lw.com/en/insights/european-commission-proposes-further-one-year-delay-to-the-eu-deforestation-regulation
+    publisher: Latham & Watkins
+    type: secondary
+    accessed: '2026-09-24'
+  - title: EU Deforestation Regulation - Revised Implementation Timeline for 2025
+    url: https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=EU%20Deforestation%20Regulation%20-%20Revised%20Implementation%20Timeline%20for%202025_Brussels%20USEU_European%20Union_E42025-0001.pdf
+    publisher: USDA Foreign Agricultural Service (GAIN report)
+    type: primary
+    accessed: '2026-09-24'
+  - title: Regulation on Deforestation-free products
     url: https://environment.ec.europa.eu/topics/forests/deforestation/regulation-deforestation-free-products_en
     publisher: European Commission
     type: primary
-    accessed: '2026-09-23'
-  - title: Commission updates product scope and tools to support EUDR (13 Jul 2026)
-    url: https://environment.ec.europa.eu/news/commission-updates-product-scope-and-tools-support-eudr-2026-07-13_en
-    publisher: European Commission
-    type: primary
-    accessed: '2026-09-23'
-  - title: Delegated Regulation (EU) 2026/2102 (Annex I scope)
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202602102
-    publisher: EUR-Lex
-    type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - rules-eudr-country-benchmark
   - intelligence-gfw-pro
@@ -91,495 +84,6 @@ blips:
   - date: '2027-06-30'
     type: milestone
     summary: Applies to other micro and small operators.
-- id: rules-esrs-2026-e3-e4
-  name: 'ESRS (2026): E3 Water & E4 Biodiversity'
-  quadrant: rules
-  ring: adopt
-  evidence: E5
-  severity: null
-  scope:
-    commodities: []
-    issues:
-    - biodiversity
-    - water
-    horizon:
-    - now
-  summary: ESRS's 2026 revision keeps biodiversity (E4) materiality statements mandatory even where full topical disclosure
-    is phased in.
-  rationale: 'The Commission''s July 2026 revision of the sustainability reporting standards (Reg. (EU) 2026/1563) and the
-    Omnibus I CSRD scope amendment (Dir. (EU) 2026/470) cut disclosure volume and narrowed who reports, but did not remove
-    the substance of ESRS 2''s biodiversity requirement. E4 (Biodiversity & Ecosystems) can be phased in on timing, but
-    a biodiversity materiality statement is always required under ESRS 1 §§121-127, and any topic a company judges material
-    still needs short disclosures from year one under ESRS 2 BP-2 §§7-10. For a sustainability lead this means: don''t read
-    "simplification" as "biodiversity is optional" — the materiality assessment itself is the non-negotiable, and it decides
-    what else follows.'
-  actions:
-  - Run (or re-run) the E4 double-materiality assessment now — it is required regardless of phase-in status.
-  - Confirm which entities fall inside the narrowed CSRD scope after Omnibus I before scoping the disclosure.
-  sources:
-  - title: Commission Delegated Regulation (EU) 2026/1563 (ESRS)
-    url: https://eur-lex.europa.eu/eli/reg_del/2026/1563/oj
-    publisher: EUR-Lex
-    type: primary
-    accessed: '2026-09-23'
-  - title: Commission adopts revised sustainability reporting standards
-    url: https://finance.ec.europa.eu/news/commission-adopts-revised-sustainability-reporting-standards-reduce-administrative-burdens-eu-2026-07-03_en
-    publisher: European Commission (DG FISMA)
-    type: primary
-    accessed: '2026-09-23'
-  - title: Omnibus I Directive (EU) 2026/470 (CSRD scope amendment)
-    url: https://eur-lex.europa.eu/eli/dir/2026/470/oj/eng
-    publisher: EUR-Lex
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - rules-eudr
-  lifecycle:
-    since: '2026-07-03'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-07-03'
-    type: release
-    summary: Revised ESRS adopted; core E3/E4 materiality logic unchanged.
-    affects:
-    - ring
-- id: rules-csddd
-  name: CSDDD after Omnibus I
-  quadrant: rules
-  ring: assess
-  evidence: E5
-  severity: null
-  scope:
-    commodities: []
-    issues:
-    - forests-land
-    - biodiversity
-    - water
-    horizon:
-    - now
-    - '2030'
-  summary: CSDDD survives Omnibus I with a narrower scope (>5,000 employees / €1.5bn turnover) and a 2029 application date.
-  rationale: 'The CSDDD/CSRD Omnibus package was published in the Official Journal in early 2026, narrowing CSDDD''s scope
-    to companies above 5,000 employees and €1.5bn turnover and pushing first application to 26 July 2029. Transposition,
-    delegated acts and Commission guidelines are still being worked out through 2026-2027 consultations. For most mid-sized
-    operators this moves CSDDD out of urgent planning and into a watch item: the substantive due-diligence obligations are
-    real and coming, but the compressed scope and multi-year runway mean it does not yet justify the operational attention
-    EUDR does.'
-  actions:
-  - Confirm whether your entity now falls inside or outside the narrowed >5,000 employee / €1.5bn threshold.
-  - Track the Commission's CSDDD guidelines consultation for signals on what due diligence will concretely require.
-  sources:
-  - title: Corporate Sustainability Due Diligence Directive
-    url: https://commission.europa.eu/topics/business-and-industry/company-law-and-corporate-governance/corporate-sustainability-due-diligence_en
-    publisher: European Commission
-    type: primary
-    accessed: '2026-09-23'
-  - title: EU CSDDD/CSRD Omnibus published in the Official Journal
-    url: https://www.insideenergyandenvironment.com/2026/02/eu-csddd-csrd-omnibus-published-in-official-journal-transposition-delegated-acts-and-guidelines-are-next/
-    publisher: Covington (Inside Energy & Environment)
-    type: secondary
-    accessed: '2026-09-23'
-  - title: European Commission opens consultation on future CSDDD guidelines
-    url: https://www.lw.com/en/insights/european-commission-opens-consultation-on-future-csddd-guidelines
-    publisher: Latham & Watkins
-    type: secondary
-    accessed: '2026-09-23'
-  related:
-  - rules-eudr
-  lifecycle:
-    since: '2026-02-01'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-02-01'
-    type: amendment
-    summary: CSDDD/CSRD Omnibus published in the Official Journal; scope narrowed.
-    affects:
-    - scope
-    - lifecycle
-- id: rules-eu-batteries-dd
-  name: EU Batteries Regulation due diligence
-  quadrant: rules
-  ring: assess
-  evidence: E5
-  severity: null
-  scope:
-    commodities:
-    - copper
-    - lithium
-    issues:
-    - biodiversity
-    - water
-    horizon:
-    - now
-    - '2030'
-  summary: Batteries Regulation due-diligence rules are stopped-clock delayed and the small-mid-cap threshold moved from
-    €40m to €200m.
-  rationale: 'The Council adopted a stop-the-clock law in mid-2025 postponing the Batteries Regulation''s due-diligence
-    obligations (Reg. (EU) 2025/1561), and a subsequent small-mid-cap (SMC) agreement raised the exemption threshold from
-    an originally-drafted €40m to €200m turnover, with an indicative European Parliament plenary vote on 23 November 2026.
-    For a battery-materials buyer this is a genuine ASSESS: the direction (due diligence obligations for critical minerals
-    in batteries) is settled policy intent, but the who/when is still moving and shouldn''t be built into 2026-2027 compliance
-    plans yet.'
-  actions:
-  - Track the 23 Nov 2026 plenary vote before assuming the €200m threshold is final.
-  - Flag battery-materials suppliers that would fall inside either the €40m or €200m threshold for early diligence.
-  sources:
-  - title: Simplification — Council adopts law to stop the clock on due diligence rules for batteries
-    url: https://www.consilium.europa.eu/en/press/press-releases/2025/07/18/simplification-council-adopts-law-to-stop-the-clock-on-due-diligence-rules-for-batteries/
-    publisher: Council of the EU
-    type: primary
-    accessed: '2026-09-23'
-  - title: Regulation (EU) 2025/1561 (batteries due-diligence postponement)
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:L_202501561
-    publisher: EUR-Lex
-    type: primary
-    accessed: '2026-09-23'
-  - title: Agreement on simplified rules for small mid-cap companies
-    url: https://www.europarl.europa.eu/news/en/press-room/20260608IPR44908/agreement-on-simplified-rules-for-small-mid-cap-companies
-    publisher: European Parliament
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - conditions-water-stress-copper-lithium-basins
-  lifecycle:
-    since: '2025-07-18'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2025-07-18'
-    type: delay
-    summary: Stop-the-clock law postpones batteries due-diligence obligations.
-    affects:
-    - lifecycle
-  - date: '2026-06-08'
-    type: amendment
-    summary: SMC agreement raises the exemption threshold from €40m to €200m.
-    affects:
-    - scope
-  - date: '2026-11-23'
-    type: milestone
-    summary: Indicative European Parliament plenary vote.
-- id: rules-issb-nature-ed
-  name: ISSB nature-related Practice Statement (ED)
-  quadrant: rules
-  ring: assess
-  evidence: E2
-  severity: null
-  scope:
-    commodities: []
-    issues:
-    - biodiversity
-    horizon:
-    - now
-    - '2030'
-  summary: ISSB's nature-related exposure draft was approved for balloting in July 2026, targeting COP17; not yet published.
-  rationale: 'The ISSB approved balloting on its nature-related disclosure exposure draft in July 2026, drawing directly
-    on the TNFD framework, with a target release around COP17 (19-30 October 2026). As of the access date it had not yet
-    been published. This is an early, credible signal that TNFD-style nature disclosure is heading toward IFRS-endorsed
-    standard status, but it remains a draft: ASSESS reflects "brief the team, watch for the exposure draft", not something
-    to build reporting infrastructure against yet.'
-  actions:
-  - Watch for the exposure draft's publication around COP17 (Oct 2026) and read it against your existing TNFD work.
-  sources:
-  - title: Nature-related Disclosures (ISSB project page)
-    url: https://www.ifrs.org/projects/work-plan/biodiversity-ecosystems-and-ecosystem-services/
-    publisher: IFRS Foundation / ISSB
-    type: primary
-    accessed: '2026-09-23'
-  - title: TNFD's decision on ISSB nature-related standard-setting, drawing on the TNFD framework
-    url: https://tnfd.global/issb-decision-on-nature-related-standard-setting-drawing-on-tnfd-framework/
-    publisher: TNFD
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - responses-tnfd-leap
-  lifecycle:
-    since: '2026-07-21'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-07-21'
-    type: milestone
-    summary: ISSB approves balloting on the nature-related exposure draft.
-- id: rules-sbtn-land-freshwater
-  name: SBTN land & freshwater targets (V2)
-  quadrant: rules
-  ring: trial
-  evidence: E3
-  severity: null
-  scope:
-    commodities: []
-    issues:
-    - forests-land
-    - water
-    horizon:
-    - now
-    - '2030'
-  summary: SBTN's Science-Based Targets for Nature 2.0 launches 13 Oct 2026, but corporate uptake is still small.
-  rationale: 'SBTN''s next-generation land and freshwater targets (SBTs for Nature 2.0) launch on 13 October 2026. The Science
-    Based Targets Network''s own tracker shows uptake still low — 35 companies with validated milestones and 18 with validated
-    targets as of the access date. This is a genuine methodology worth piloting (TRIAL): credible, science-based, and increasingly
-    referenced alongside SBTi''s climate targets, but not yet a normal-practice baseline the way EUDR due diligence or Aqueduct
-    screening already are.'
-  actions:
-  - Pilot SBTN's V2 land and freshwater target-setting process on one priority sourcing landscape.
-  sources:
-  - title: SBTs for Nature 2.0
-    url: https://sciencebasedtargetsnetwork.org/companies/take-action/sbts-for-nature-2-0/
-    publisher: Science Based Targets Network
-    type: primary
-    accessed: '2026-09-23'
-  - title: SBTN Target Tracker
-    url: https://sciencebasedtargetsnetwork.org/company/target-tracker/
-    publisher: Science Based Targets Network
-    type: dataset
-    accessed: '2026-09-23'
-  related:
-  - intelligence-wri-aqueduct
-  lifecycle:
-    since: '2026-10-13'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-10-13'
-    type: release
-    summary: SBTs for Nature 2.0 launches.
-- id: rules-legality-only-soy-benchmarks
-  name: Legality-only soy benchmarks (Brazil–China soy guide)
-  quadrant: rules
-  ring: caution
-  evidence: E2
-  severity: null
-  scope:
-    commodities:
-    - soy
-    issues:
-    - forests-land
-    origins:
-      political:
-      - Brazil
-      - China
-      ecological:
-      - Cerrado
-      - Amazon
-    horizon:
-    - now
-  summary: A China-Brazil soy sustainability guide reportedly leans on Brazilian legality, which is weaker than deforestation-free.
-  rationale: 'Brazilian soy-sector reporting (Aprosoja-MT, Valor International) and a WRI China release describe new China-Brazil
-    soy sustainability guidelines that reference Brazilian environmental law as a basis for recognition. The underlying
-    guideline text itself was not retrieved directly — evidence here is secondary and from an interested party (Aprosoja,
-    the Mato Grosso soy growers'' association) corroborated by an independent publisher (Valor) and WRI China''s own release
-    framing. "Legality" and "deforestation-free" are not the same bar: Brazilian law still permits legal deforestation on
-    private land under certain conditions. Treat any legality-only benchmark as CAUTION until the guideline text itself
-    is verified.'
-  actions:
-  - Do not treat legality-only compliance as equivalent to a deforestation-free claim in supplier communications.
-  - Seek the primary guideline text before citing it as a sourcing benchmark.
-  sources:
-  - title: China accepts Brazil's environmental law for soybean imports
-    url: https://valorinternational.globo.com/agribusiness/news/2026/07/03/china-accepts-brazils-environmental-law-for-soybean-imports.ghtml
-    publisher: Valor International
-    type: secondary
-    accessed: '2026-09-23'
-  - title: Aprosoja-MT fortalece reconhecimento da legislação brasileira em diretrizes de soja sustentável entre Brasil
-      e China
-    url: https://aprosoja.com.br/comunicacao/release/aprosoja-mt-fortalece-reconhecimento-da-legislacao-brasileira-em-diretrizes-de-soja-sustentavel-entre-brasil-e-china
-    publisher: Aprosoja Mato Grosso
-    type: primary
-    accessed: '2026-09-23'
-  - title: The Release Ceremony of the Guidelines on China-Brazil Soybean Sustainable Supply Chain
-    url: https://wri.org.cn/xinwen/The-Release-Ceremony-of-the-Guidelines-on-China-Brazil-Soybean-Sustainable-Supply-Chain
-    publisher: WRI China
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - conditions-soy-frontier-conversion
-  lifecycle:
-    since: '2026-07-03'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-07-03'
-    type: release
-    summary: China-Brazil soy sustainability guideline reportedly references Brazilian legality.
-- id: rules-eudr-country-benchmark
-  name: EUDR country benchmark as primary risk input
-  quadrant: rules
-  ring: caution
-  evidence: E4
-  severity: null
-  dominant_clock: political
-  scope:
-    commodities: *id001
-    issues:
-    - forests-land
-    origins:
-      political: []
-      ecological: []
-    horizon:
-    - now
-  summary: The EUDR country risk list is a compliance tier, not a risk assessment. It will not be updated before the EUDR
-    applies.
-  rationale: Implementing Regulation (EU) 2025/1093 classes only four countries as high risk and most producing countries
-    (e.g. Brazil, Indonesia, Côte d'Ivoire) as standard. The Commission has said the list will not be updated before the
-    EUDR applies on 30 December 2026. The tier decides how much due diligence the law requires. It says nothing about the
-    deforestation or conversion risk in a specific landscape or supply shed. Using it as the main risk signal hides the
-    subnational differences that decide real exposure.
-  actions:
-  - Use the country tier only for the legal due-diligence level; screen risk at landscape or plot level.
-  sources:
-  - title: Implementing Regulation (EU) 2025/1093 (country classification)
-    url: https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32025R1093
-    publisher: EUR-Lex
-    type: primary
-    accessed: '2026-09-23'
-  - title: Multi-Stakeholder Platform on Deforestation, 41st meeting summary (8 May 2026)
-    url: https://ec.europa.eu/transparency/expert-groups-register/core/api/front/document/135985/download
-    publisher: European Commission
-    type: primary
-    accessed: '2026-09-23'
-  - title: EUDR simplification review, COM(2026)191
-    url: https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52026DC0191
-    publisher: European Commission
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - rules-eudr
-  - intelligence-plot-level-satellite-monitoring
-  lifecycle:
-    since: '2025-05-26'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2025-05-23'
-    type: release
-    summary: First country classification published (Impl. Reg. 2025/1093).
-  - date: '2026-05-08'
-    type: evidence
-    summary: 'Commission: benchmarking will not be updated before EUDR application.'
-    affects:
-    - ring
-- id: conditions-soy-frontier-conversion
-  name: Forest & savanna conversion on the soy frontier
-  quadrant: conditions
-  ring: adopt
-  evidence: E4
-  severity: high
-  scope:
-    commodities:
-    - soy
-    issues:
-    - forests-land
-    origins:
-      political:
-      - Brazil
-      ecological:
-      - Cerrado
-      - Amazon
-    horizon:
-    - now
-  summary: Major traders exited the Amazon Soy Moratorium in Jan 2026 while Cerrado soy-driven conversion keeps rising.
-  rationale: 'Reuters and AP confirmed in January 2026 that major Brazilian grain traders quit the Amazon Soy Moratorium,
-    with roughly two-thirds of former signatories gone. Trase''s dataset shows Cerrado soy-linked conversion rising — 794,000
-    ha in 2022, up from 635,000 ha in 2020 — predating the moratorium exit and suggesting the trend was already unfavourable.
-    For a soy buyer this is squarely ADOPT: forest and savanna conversion on the soy frontier is an active, worsening, well-documented
-    condition, not an emerging risk. The moratorium''s collapse removes one of the few voluntary safeguards that existed
-    against Amazon (though not Cerrado) conversion specifically.'
-  actions:
-  - Do not assume Amazon Soy Moratorium coverage still applies to all major traders; verify current signatory status per
-    supplier.
-  - Extend monitoring to the Cerrado, which the moratorium never covered and where conversion is rising fastest.
-  sources:
-  - title: Major Brazilian grain traders quit Amazon conservation pact
-    url: https://www.reuters.com/sustainability/climate-energy/major-brazilian-grain-traders-quit-amazon-conservation-pact-2026-01-05/
-    publisher: Reuters
-    type: secondary
-    accessed: '2026-09-23'
-  - title: Brazil's soy industry withdraws from Amazon deforestation pact
-    url: https://apnews.com/article/brazil-amazon-soy-production-moratorium-deforestation-pact-109dee463fdcd6931a4bb01799cba577
-    publisher: Associated Press
-    type: secondary
-    accessed: '2026-09-23'
-  - title: Brazilian soy exports and deforestation
-    url: https://trase.earth/insights/brazilian-soy-exports-and-deforestation
-    publisher: Trase (SEI / Global Canopy)
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - rules-eudr
-  - rules-legality-only-soy-benchmarks
-  - intelligence-trase
-  lifecycle:
-    since: '2026-01-05'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-01-05'
-    type: milestone
-    summary: Major traders confirmed exiting the Amazon Soy Moratorium.
-    affects:
-    - ring
-- id: conditions-cattle-deforestation
-  name: Cattle-driven deforestation
-  quadrant: conditions
-  ring: adopt
-  evidence: E4
-  severity: high
-  scope:
-    commodities:
-    - cattle
-    issues:
-    - forests-land
-    origins:
-      political:
-      - Brazil
-      - Paraguay
-      ecological:
-      - Amazon
-      - Gran Chaco
-    horizon:
-    - now
-  summary: Indirect cattle suppliers remain a documented traceability blind spot behind Amazon and Chaco deforestation.
-  rationale: 'Human Rights Watch''s October 2025 investigation (reported by Al Jazeera) documents that Brazil''s GTA cattle-movement
-    permit system cannot trace indirect suppliers — individual animal traceability isn''t mandatory until 2032 — letting
-    deforestation-linked cattle enter supply chains via intermediary ranches. In parallel, NASA/Landsat data and Earthsight''s
-    "Grand Theft Chaco" investigation quantify large-scale, ongoing clearing (200,000-300,000 ha/year) in Paraguay''s Gran
-    Chaco, heavily cattle-driven. This is ADOPT: well-evidenced, active, and structurally hard to fix because the blind
-    spot is systemic (permit design), not a data-availability gap.'
-  actions:
-  - Treat indirect cattle suppliers as a default risk category, not an exception, until individual traceability is mandatory
-    (2032).
-  - Extend monitoring into the Paraguayan/Bolivian Chaco, not only the Brazilian Amazon.
-  sources:
-  - title: Is your beef linked to Amazon deforestation? A report highlights loopholes
-    url: https://www.aljazeera.com/news/2025/10/15/is-your-beef-linked-to-amazon-deforestation-a-report-highlights-loopholes
-    publisher: Al Jazeera (reporting on Human Rights Watch investigation)
-    type: secondary
-    accessed: '2026-09-23'
-  - title: Grand Theft Chaco
-    url: https://www.earthsight.org.uk/grandtheftchaco-en
-    publisher: Earthsight
-    type: primary
-    accessed: '2026-09-23'
-  - title: Deforestation in Paraguay's Gran Chaco
-    url: https://science.nasa.gov/missions/landsat/deforestation-in-paraguays-gran-chaco/
-    publisher: NASA Earth Observatory / Landsat
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - responses-cattle-indirect-supplier-monitoring
-  lifecycle:
-    since: '2025-10-15'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2025-10-15'
-    type: evidence
-    summary: HRW investigation documents indirect-supplier traceability blind spot.
-    affects:
-    - ring
 - id: conditions-cocoa-forest-loss
   name: Cocoa-driven forest loss and protected-area encroachment
   quadrant: conditions
@@ -602,13 +106,10 @@ blips:
     - now
     - '2030'
   summary: Cocoa drives documented protected-area loss in Côte d'Ivoire/Ghana, compounded by rising heat and drought stress.
-  rationale: 'A peer-reviewed study finds 37% of protected-area forest loss in Côte d''Ivoire linked to cocoa expansion,
-    and USDA''s 2025 GAIN report puts 12% of Ivorian cocoa producers inside protected forest land. S&P Global Sustainable1''s
-    climate research separately projects up to 65% of Ghana''s cocoa belt under drought stress by 2050. This blip merges
-    what were two related longlist items (forest encroachment and climate/heat stress) because they share the same producer
-    base and compounding drivers: land pressure pushes cultivation into forest margins just as climate stress reduces suitable
-    land elsewhere. ADOPT reflects that this is an active, well-documented, structural condition for West African cocoa
-    sourcing.'
+  rationale: ADOPT/E4, unchanged. Peer-reviewed Kalischek et al. study (2023) documenting 37% of Côte d'Ivoire protected-area
+    forest loss linked to cocoa was already available. USDA GAIN report dated 7 March 2025 — inside 2025-Q1 itself — puts
+    ~12% of Ivorian cocoa producers inside protected forest, same figure as 2026-Q4. Genuinely stable, already-mature condition;
+    S&P Global Sustainable1 drought-stress research not confirmed to predate 2025-Q1, excluded.
   actions:
   - Screen cocoa-sourcing landscapes in Côte d'Ivoire and Ghana against protected-area boundaries directly, not only national-level
     statistics.
@@ -623,11 +124,6 @@ blips:
     url: https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Cote%20d%27Ivoire%20-%20Cocoa%20Sector%20Overview%20-%202025_Accra_Cote%20d%27Ivoire_IV2025-0001.pdf
     publisher: USDA Foreign Agricultural Service (GAIN report)
     type: primary
-    accessed: '2026-09-23'
-  - title: Brewing risks — Cocoa and coffee supply chains face escalating climate pressures
-    url: https://www.spglobal.com/sustainable1/en/insights/research-reports/brewing-risks-cocoa-coffee-climate-risks
-    publisher: S&P Global Sustainable1
-    type: secondary
     accessed: '2026-09-23'
   related:
   - conditions-arabica-climate-suitability
@@ -657,32 +153,26 @@ blips:
     horizon:
     - now
   summary: Palm-oil deforestation trends are genuinely mixed since 2022 — no primary source newer than 2022 confirms direction.
-  rationale: 'Trase/SEI data through 2022 shows a decade-long decline in Indonesian palm-oil deforestation reversing, with
-    an 18% uptick in 2022 (a 3.7x jump in Sumatra specifically). A 2025 remote-sensing analysis (TheTreeMap) describes overall
-    expansion as "declining" while deforestation "remained stable", with Papua''s frontier doubling. No primary dataset
-    newer than 2022 was found during this research pass, so the trend direction for 2023-2026 is genuinely uncertain. TRIAL
-    (rather than ADOPT) reflects that: the underlying condition is real and worth active monitoring, but the evidence base
-    needs a 2024-2026 GFW/Trase update before treating this as a settled, worsening trend on the level of the soy or cattle
-    blips.'
+  rationale: 'TRIAL/E4 (unchanged ring — with materially better, more current evidence than 2026-Q4''s write-up used). As
+    of 2025-Q1, data existed through 2024 (31,314ha converted for industrial palm oil in 2024, a 9% decrease from 34,353ha
+    in 2023 — Nusantara Atlas''s own analysis, published early 2025), plus Mongabay''s Feb 2024 report confirming a second
+    consecutive annual increase (2022→2023). At 2025-Q1 the trend read as: rose in 2022/2023, then slowed slightly (not reversed)
+    in 2024 — more current and nuanced than the 2026-Q4 researcher''s ''no primary source newer than 2022'' claim. TRIAL remains
+    right either way.'
   actions:
   - Seek a 2024-2026 GFW or Trase data refresh before upgrading this blip's ring.
   - Monitor Papua specifically — the frontier where multiple sources agree expansion is accelerating.
   sources:
-  - title: Indonesian palm oil exports and deforestation
-    url: https://www.sei.org/features/indonesian-palm-oil-exports-and-deforestation/
-    publisher: Stockholm Environment Institute (Trase)
-    type: primary
-    accessed: '2026-09-23'
   - title: Palm oil deforestation makes comeback in Indonesia after decade-long slump
     url: https://news.mongabay.com/2024/02/palm-oil-deforestation-makes-comeback-in-indonesia-after-decade-long-slump/
     publisher: Mongabay
     type: secondary
-    accessed: '2026-09-23'
-  - title: Palm Oil Deforestation in Indonesia and Papua — Stabilized and Doubled
-    url: https://www.linkedin.com/posts/david-gaveau-b575a717_palm-oil-driven-deforestation-stable-in-indonesia-activity-7434207761774698497-ALqW
-    publisher: David Gaveau / TheTreeMap
-    type: analyst-judgement
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
+  - title: Industrial Palm Oil Deforestation in Indonesia Slows Slightly in 2024
+    url: https://nusantara-atlas.org/industrial-palm-oil-deforestation-in-indonesia-slows-slightly-in-2024
+    publisher: Nusantara Atlas (TheTreeMap)
+    type: primary
+    accessed: '2026-09-24'
   lifecycle:
     since: '2022-01-01'
     until: null
@@ -717,38 +207,31 @@ blips:
     - '2030'
   summary: Basin water demand in Atacama copper/lithium regions is outpacing resupply, per two peer-reviewed hydrological
     studies.
-  rationale: 'Two peer-reviewed studies (AGU Earth''s Future; MDPI Water/TU Berlin) and a Chilean civil-society report (Observatorio
-    Ciudadano/CELS/FIDH, via Mongabay) document groundwater drawdown of several to over ten metres over 15 years in the
-    Salar de Atacama basin. Critically, the AGU paper cautions that lithium mining is under 10% of total basin freshwater
-    use and its hydrological effects are localised — so severity here should be framed as basin-cumulative (mining plus
-    agriculture plus urban demand), not lithium-attributed alone. That nuance doesn''t change the ring: the underlying condition
-    (basin demand outpacing resupply) meets ADOPT''s primary-evidence bar (E4) and is compounded by CRMA-driven extraction
-    pressure on both copper and lithium.'
+  rationale: ADOPT/E4, unchanged. The AGU peer-reviewed paper (2021) and the Observatorio Ciudadano/CELS/FIDH civil-society
+    report both predate 2025-Q1. 2026-Q4's MDPI Water paper (19 Nov 2025) did not exist yet; in its place, a 2024 InSAR subsidence
+    study (Castillo/Delgado, IEEE Trans. Geoscience and Remote Sensing, reported by Forbes Sept 2024) independently corroborates
+    ongoing basin stress via satellite radar-measured land subsidence (1-2cm/year) — arguably a stronger corroborating data
+    point for 2025-Q1.
   actions:
   - Screen copper and lithium sourcing basins for cumulative (not just extraction-attributed) water stress.
   - Pair basin screening (Aqueduct) with facility-level water-use disclosure before treating a supplier as low-risk.
   sources:
-  - title: Aqueduct Water Risk Atlas
-    url: https://www.wri.org/applications/aqueduct/water-risk-atlas/
-    publisher: World Resources Institute
-    type: dataset
-    accessed: '2026-09-23'
   - title: Relic Groundwater and Prolonged Drought Confound Interpretations of Water Sustainability and Lithium Extraction
       in Arid Lands
     url: https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002555
     publisher: AGU Earth's Future (peer-reviewed)
     type: primary
-    accessed: '2026-09-23'
-  - title: Toward a Localized Water Footprint of Lithium Brine Extraction — A Case Study from the Salar de Atacama
-    url: https://www.mdpi.com/2073-4441/17/22/3311
-    publisher: MDPI Water (peer-reviewed, TU Berlin)
-    type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
+  - title: How Is One Of The Biggest Sources Of Lithium On Earth Sinking?
+    url: https://forbes.com/sites/andrewwight/2024/09/12/how-is-one-of-the-biggest-sources-of-lithium-on-earth-sinking
+    publisher: Forbes (reporting on Castillo/Delgado, Universidad de Chile, IEEE 2024)
+    type: secondary
+    accessed: '2026-09-24'
   - title: Lithium mining leaves severe impacts in Chile, but new methods exist — Report
     url: https://litioyddhh.observatorio.cl/entradas-litio/lithium-mining-leaves-severe-impacts-in-chile-but-new-methods-exist-report
-    publisher: Mongabay (reporting on Observatorio Ciudadano/CELS/FIDH report)
+    publisher: Mongabay (reporting on Observatorio Ciudadano/CELS/FIDH)
     type: secondary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - intelligence-wri-aqueduct
   - responses-basin-level-screening
@@ -757,66 +240,6 @@ blips:
     since: '2021-08-01'
     until: null
     first_edition: 2025-q1
-- id: conditions-arabica-climate-suitability
-  name: Shifting climate suitability for arabica coffee (to 2030)
-  quadrant: conditions
-  ring: assess
-  evidence: E3
-  severity: high
-  scope:
-    commodities:
-    - coffee
-    issues:
-    - water
-    origins:
-      political:
-      - Brazil
-      ecological: []
-    horizon:
-    - now
-    - '2030'
-  summary: Climate change is projected to make roughly half of current arabica land unsuitable by 2050, with 2025-26 price
-    volatility already visible.
-  rationale: 'Peer-reviewed modelling (Bunn et al., summarised by World Coffee Research) projects around half of current
-    arabica-suitable land becoming unsuitable by 2050 under climate change. That long-horizon modelling is now visibly showing
-    up in short-term markets: arabica prices hit a record $4.38/lb in October 2025 on Brazilian drought and wildfires, then
-    crashed to $2.39/lb by June 2026. ASSESS reflects strong scientific grounding (primary peer-reviewed modelling, E3)
-    paired with genuine near-term price volatility — worth briefing the team and setting a decision point, without yet being
-    an operational sourcing signal the way the deforestation-driven Conditions blips are.'
-  actions:
-  - Brief sourcing and finance teams on 2030-2050 arabica suitability shifts before locking long-term contracts.
-  - Track short-term price volatility as an early indicator of the modelled long-term suitability shift.
-  sources:
-  - title: Projected Shifts in Coffea arabica Suitability among Major Global Producing Regions Due to Climate Change (Bunn
-      et al., 2015)
-    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4397088/
-    publisher: PLOS ONE (peer-reviewed, via PMC/NCBI)
-    type: primary
-    accessed: '2026-09-23'
-  - title: Multiclass Classification of Agro-Ecological Zones for Arabica Coffee
-    url: https://worldcoffeeresearch.org/resources/multiclass-classification-of-agro-ecological-zones-for-arabica-coffee
-    publisher: World Coffee Research (summarizing peer-reviewed CIAT/Bunn study)
-    type: secondary
-    accessed: '2026-09-23'
-  - title: Coffee Price Forecast — Expert Analysis and Market Predictions
-    url: https://j2t.com/solutions/blogview/coffee-price-forecast/
-    publisher: Just2Trade
-    type: secondary
-    accessed: '2026-09-23'
-  related:
-  - conditions-cocoa-forest-loss
-  - responses-climate-suitability-scenarios
-  lifecycle:
-    since: '2025-10-01'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2025-10-01'
-    type: evidence
-    summary: Arabica prices hit a record $4.38/lb on Brazilian drought and wildfires.
-  - date: '2026-06-01'
-    type: evidence
-    summary: Arabica prices crash to $2.39/lb.
 - id: intelligence-wri-aqueduct
   name: WRI Aqueduct 4.0
   quadrant: intelligence
@@ -842,10 +265,8 @@ blips:
     spatial_resolution: sub-basin
     attribution_confidence: null
   summary: Free, sub-basin water-risk data with 2030 projections; the default starting point for basin screening.
-  rationale: 'Aqueduct 4.0 gives baseline and projected water stress at sub-basin level, is free and openly licensed (CC
-    BY 4.0), and is already the reference in many corporate and investor water-risk methods. For a procurement lead that
-    makes it the obvious first screen for sourcing basins, especially for copper and lithium in arid regions. It is a screen,
-    not a site assessment: sub-basin indicators do not capture local water rights or a specific mine''s water balance.'
+  rationale: ADOPT/E4, unchanged. Aqueduct 4.0 (16 Aug 2023) well before this quarter; already the free, sub-basin-resolution
+    default at 2025-Q1 exactly as in 2026-Q4.
   actions:
   - Screen your top sourcing origins by Aqueduct baseline water stress and the 2030 projection.
   sources:
@@ -888,12 +309,7 @@ blips:
     - now
   summary: Trase's free subnational trade-flow data links commodity exports to production regions, framed as exposure not
     attribution.
-  rationale: 'Trase (a partnership of the Stockholm Environment Institute and Global Canopy) maps subnational commodity
-    trade flows, connecting export volumes to specific production regions for soy, cattle, palm oil and other forest-risk
-    commodities. Its methodology is explicit that the output measures deforestation "exposure" — statistical association
-    between trade flows and regional deforestation — not shipment-level attribution of a specific parcel of land to a specific
-    export. For a supply-chain analyst this makes it an ADOPT-grade default: free, well-documented, and already the data
-    source behind several other blips on this radar (soy frontier conversion, palm-oil trends).'
+  rationale: ADOPT/E4, unchanged. Trase has operated since 2015; nothing about its status changed between 2025-Q1 and 2026-Q4.
   actions:
   - Use Trase as the default subnational exposure screen before commissioning bespoke traceability work.
   sources:
@@ -927,24 +343,24 @@ blips:
     horizon:
     - now
   summary: IBAT aggregates KBA, WDPA and Red List data for biodiversity screening, but sits on paid API tiers.
-  rationale: IBAT (the Integrated Biodiversity Assessment Tool, run by IUCN, UNEP-WCMC, BirdLife and Conservation International)
-    provides authoritative site-level screening against Key Biodiversity Areas, the World Database on Protected Areas, and
-    the IUCN Red List. It is the closest thing to an industry-standard biodiversity-screening dataset, but access sits behind
-    paid pricing tiers rather than being freely open, which is why this sits at TRIAL rather than ADOPT despite strong evidence
-    (E4) — cost is a genuine adoption barrier, not a data-quality one.
+  rationale: 'TRIAL/E4, unchanged. Same ring as 2026-Q4: authoritative site-level data (KBA/WDPA/Red List), paid tiers keep
+    it at TRIAL. Currency note: a 2025 IBAT announcement (published June 2025, after this quarter, reporting 2023/24 figures)
+    shows 2023 investment at USD 1.2m — smaller scale than the USD 2.5m/200+ businesses figure for 2024. At 2025-Q1 itself
+    uptake was real but smaller — doesn''t change the ring.'
   actions:
   - Pilot IBAT on your highest-risk sourcing sites before committing to an organisation-wide subscription.
   sources:
+  - title: IBAT Alliance celebrates investment of USD 2.5 million in nature data (cites comparison 2023 figure of USD 1.2
+      million)
+    url: https://ibat-alliance.org/news/ibat-alliance-celebrates-investment
+    publisher: IBAT Alliance
+    type: primary
+    accessed: '2026-09-24'
   - title: IBAT pricing
     url: https://www.ibat-alliance.org/pricing
-    publisher: IBAT Alliance (IUCN/UNEP-WCMC/BirdLife/CI)
+    publisher: IBAT Alliance
     type: primary
-    accessed: '2026-09-23'
-  - title: IBAT for Business
-    url: https://www.ibat-alliance.org/
-    publisher: IBAT Alliance (IUCN/UNEP-WCMC/BirdLife/CI)
-    type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - intelligence-wri-aqueduct
   lifecycle:
@@ -954,12 +370,17 @@ blips:
 - id: intelligence-gfw-pro
   name: GFW Pro
   quadrant: intelligence
-  ring: caution
+  ring: adopt
   evidence: E4
   severity: null
   dominant_clock: business
   scope:
-    commodities: *id001
+    commodities:
+    - soy
+    - cocoa
+    - coffee
+    - palm-oil
+    - cattle
     issues:
     - forests-land
     origins:
@@ -967,24 +388,29 @@ blips:
       ecological: []
     horizon:
     - now
-  summary: WRI's free deforestation-monitoring app retires on 31 Dec 2026, the day after the EUDR applies.
-  rationale: 'GFW Pro has been a widely used free tool for monitoring deforestation in supply sheds and portfolios. WRI
-    will retire the web app and API on 31 December 2026 and fold it into Global Nature Watch. Any EUDR due-diligence workflow
-    that depends on it needs a migration plan now, because the retirement lands one day after the regulation applies to
-    large and medium operators. That is why it sits in CAUTION: the tool is not wrong, but relying on it past 2026 is.'
+  summary: Free, actively-developed deforestation-monitoring app; no retirement signal as of Q1 2025.
+  rationale: 'ADOPT/E4 — diverges from 2026-Q4''s CAUTION/E4. The headline finding of this pass. GFW Pro launched publicly
+    June 2019 and had, by January 2025, over 1,000 subscribing organisations, plus a newly-added EUDR compliance module (Aug
+    2024) and a fresh TraceGains integration (Jan 2025) — WRI was actively expanding the product, not winding it down. The
+    retirement/folding-into-Global-Nature-Watch announcement did not happen until September 2026, well after this quarter.
+    A WALTER edition at 2025-Q1 had no basis to flag CAUTION — the honest call is ADOPT: widely-used, actively-developed,
+    free default with real EUDR-readiness momentum.'
   actions:
-  - Inventory EUDR workflows and reports that depend on GFW Pro; plan the migration in Q4 2026.
+  - Continue building EUDR due-diligence workflows on GFW Pro; note its January 2025 TraceGains integration as a new capability
+    worth evaluating.
   sources:
-  - title: GFW Pro
-    url: https://pro.globalforestwatch.org/
+  - title: 'GFW Pro (Global Forest Watch Pro) — product entry: launched publicly 11 June 2019; EUDR module added Aug 2024;
+      TraceGains integration Jan 2025; over 1,000 organisations as of Jan 2025'
+    url: https://eo-atlas.org/products/analysis-service/gfw-pro
+    publisher: EO-Atlas (earth-observation product catalogue)
+    type: secondary
+    accessed: '2026-09-24'
+  - title: RELEASE — Global Forest Watch Becomes Global Nature Watch, Expanding to Cover More Land Ecosystems (confirms rename/retirement
+      only happened Sept 2026)
+    url: https://www.wri.org/news/release-global-forest-watch-becomes-global-nature-watch-expanding-cover-more-land-ecosystems
     publisher: World Resources Institute
     type: primary
-    accessed: '2026-09-23'
-  - title: About GFW Pro
-    url: https://pro.globalforestwatch.org/about
-    publisher: World Resources Institute
-    type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - intelligence-global-nature-watch
   - rules-eudr
@@ -999,44 +425,6 @@ blips:
     affects:
     - ring
     - lifecycle
-- id: intelligence-global-nature-watch
-  name: Global Nature Watch (GFW Pro successor)
-  quadrant: intelligence
-  ring: assess
-  evidence: E2
-  severity: null
-  dominant_clock: business
-  scope:
-    commodities: *id001
-    issues:
-    - forests-land
-    - biodiversity
-    origins:
-      political: []
-      ecological: []
-    horizon:
-    - now
-  summary: WRI's successor platform to GFW Pro; GNW Horizon is free and in preview, with EUDR dashboards announced.
-  rationale: 'Global Nature Watch is where GFW Pro users are being moved. GNW Horizon is free and in preview, and EUDR and
-    AFi dashboards have been announced but are not yet proven in operational due diligence. It is worth a structured look
-    now, because the switch is forced by the end of 2026, but it has not earned TRIAL yet: capabilities and continuity for
-    existing GFW Pro workflows still need to be confirmed.'
-  actions:
-  - Evaluate GNW Horizon against your current GFW Pro use before Q4 2026 ends; set a decision date.
-  sources:
-  - title: About GFW Pro (retirement and transition to Global Nature Watch)
-    url: https://pro.globalforestwatch.org/about
-    publisher: World Resources Institute
-    type: primary
-    accessed: '2026-09-23'
-  related:
-  - intelligence-gfw-pro
-  - intelligence-plot-level-satellite-monitoring
-  lifecycle:
-    since: null
-    until: null
-    first_edition: 2025-q1
-  events: []
 - id: intelligence-plot-level-satellite-monitoring
   name: Plot-level satellite deforestation monitoring (as a category)
   quadrant: intelligence
@@ -1044,7 +432,7 @@ blips:
   evidence: E3
   severity: null
   scope:
-    commodities: &id002
+    commodities:
     - soy
     - cocoa
     - coffee
@@ -1054,14 +442,10 @@ blips:
     - forests-land
     horizon:
     - now
-  summary: Plot-level satellite monitoring (Sentinel-2 + ML) now reaches 93.5-96.5% farm-scale accuracy in peer-reviewed
-    tests.
-  rationale: A peer-reviewed study (MDPI Forests) using Copernicus Sentinel-2 imagery and machine learning (the ForestMind/PyEO
-    approach) reports 93.5-96.5% farm-scale accuracy for deforestation-free due-diligence monitoring in Brazil and Guatemala
-    test sites. Commercial vendors (Satelligence, Airbus's Starling) offer this as an EUDR-compliance category, exemplifying
-    rather than proving the approach at scale. TRIAL reflects that the underlying technique is now backed by primary peer-reviewed
-    accuracy figures (meeting the E3 bar) but is still a category of emerging tools rather than one settled, widely-adopted
-    product.
+  summary: Plot-level satellite monitoring (Sentinel-2 + ML) now reaches 93.5-96.5% farm-scale accuracy in peer-reviewed tests.
+  rationale: TRIAL/E3, unchanged. The MDPI Forests peer-reviewed study (published 28 March 2024) predates this quarter and
+    already supplies the E3 accuracy figures used in 2026-Q4. Commercial vendors (Satelligence, Airbus Starling) were already
+    offering EUDR-compliance monitoring by 2025-Q1.
   actions:
   - Pilot a Sentinel-2-based plot monitoring tool on your highest-risk EUDR supply sheds ahead of the Dec 2026 deadline.
   sources:
@@ -1101,11 +485,9 @@ blips:
     - now
   summary: EcoVadis-type ratings score companies 0-100, not places — useful for supplier governance, not site-level environmental
     risk.
-  rationale: 'EcoVadis and similar supplier sustainability ratings produce a company-level 0-100 score covering environment,
-    labour, ethics and procurement. They are the archetypal "score, not place" product: useful as a general supplier-governance
-    signal, but they don''t tell a sourcing analyst whether a specific supplier''s specific facility or sourcing landscape
-    sits in a deforestation hotspot or a water-stressed basin. CAUTION reflects that risk directly: treating a good EcoVadis
-    score as evidence of low environmental risk at a specific site is a category error this radar exists partly to correct.'
+  rationale: CAUTION/E3, unchanged. EcoVadis has offered company-level 0-100 ESG scores since 2007; the 'score, not place'
+    critique is structural, not time-bound, applying identically at 2025-Q1. Scale statistics (e.g. ~130,000 rated firms by
+    FY2025) are dated 2025 or later and should not be quoted for this quarter.
   actions:
   - Do not substitute a supplier's aggregate sustainability rating for site- or basin-level environmental screening.
   sources:
@@ -1125,50 +507,6 @@ blips:
     since: '2007-01-01'
     until: null
     first_edition: 2025-q1
-- id: intelligence-opaque-ai-biodiversity-scores
-  name: Opaque AI biodiversity risk scores
-  quadrant: intelligence
-  ring: caution
-  evidence: E1
-  severity: null
-  scope:
-    commodities: []
-    issues:
-    - biodiversity
-    horizon:
-    - now
-  summary: TNFD documents a general transparency gap in nature-related risk scoring, but no named vendor's tool has been
-    independently audited.
-  rationale: TNFD's July 2026 discussion paper on nature-related risk assessment methods documents that disclosures behind
-    many scoring tools are "limited, partial, or absent" — a real, general transparency problem. However, no independent
-    academic or journalistic investigation of a specific, named opaque AI biodiversity-scoring vendor was found during this
-    research pass; the critique here is inferred from TNFD's general concern plus one vendor's own "no black-box scoring"
-    marketing positioning (an implicit, not documented, critique of unnamed competitors). CAUTION/E1 is the right ring for
-    a real but thin, largely circumstantial signal — treat the framing here as "the category of opaque scoring tools", not
-    a documented indictment of a specific product.
-  actions:
-  - Ask any nature-risk-scoring vendor for methodology transparency before adopting their score as a decision input.
-  sources:
-  - title: Discussion paper on nature-related risk assessment methods and practices (Jul 2026)
-    url: https://tnfd.global/wp-content/uploads/2026/07/Discussion-paper-on-nature-related-risk-assessment-methods-and-practices_WEB.pdf?v=1782903277
-    publisher: TNFD
-    type: primary
-    accessed: '2026-09-23'
-  - title: '"No black-box scoring" positioning (implicit critique of opaque competitor AI scoring)'
-    url: https://www.earthblox.io/
-    publisher: Earth Blox (vendor site)
-    type: secondary
-    accessed: '2026-09-23'
-  related:
-  - intelligence-supplier-ratings-as-env-signal
-  lifecycle:
-    since: '2026-07-01'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-07-01'
-    type: evidence
-    summary: TNFD discussion paper documents general nature-risk scoring transparency gap.
 - id: responses-plot-geolocation-traceability
   name: Plot-level geolocation & traceability
   quadrant: responses
@@ -1176,18 +514,22 @@ blips:
   evidence: E4
   severity: null
   scope:
-    commodities: *id002
+    commodities:
+    - soy
+    - cocoa
+    - coffee
+    - palm-oil
+    - cattle
     issues:
     - forests-land
     horizon:
     - now
   summary: EUDR makes plot-level geolocation and due-diligence statements table stakes for large and medium operators from
     Dec 2026.
-  rationale: 'The EU Deforestation Regulation requires geolocation coordinates and due-diligence statements for in-scope
-    commodities from 30 December 2026. This is the direct operational response to the EUDR blip (rules-eudr): once the law
-    applies, plot-level geolocation stops being a nice-to-have traceability improvement and becomes the baseline condition
-    for EU market access. ADOPT reflects that this is no longer optional practice for any operator sourcing soy, cocoa,
-    coffee, palm oil or cattle into the EU.'
+  rationale: ADOPT/E4 (unchanged, but tied to the earlier Dec 2025 application date — see rules-eudr above). The geolocation/DDS
+    requirement itself was unchanged law at 2025-Q1 (EUDR entered into force June 2023); only the deadline (Dec 2025 vs Dec
+    2026) differed. With the deadline under a year out, plot-level geolocation was already an operational build priority,
+    arguably with more urgency than 2026-Q4 shows.
   actions:
   - Confirm plot-level geolocation coverage per commodity × origin before 30 Dec 2026.
   - Build due-diligence statement generation into procurement workflows now, not at the deadline.
@@ -1196,12 +538,12 @@ blips:
     url: https://environment.ec.europa.eu/topics/forests/deforestation/regulation-deforestation-free-products_en
     publisher: European Commission
     type: primary
-    accessed: '2026-09-23'
-  - title: Guidance Document for the Regulation on Deforestation-Free Products (2026)
-    url: https://green-forum.ec.europa.eu/document/download/030c9bf7-a935-4d4d-91c6-bbddd745c181_en?filename=Guidance%20Document%20for%20the%20Regulation%20on%20Deforestation-Free%20Products%20%282026%29.pdf
-    publisher: European Commission
+    accessed: '2026-09-24'
+  - title: EU Deforestation Regulation - Revised Implementation Timeline for 2025
+    url: https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=EU%20Deforestation%20Regulation%20-%20Revised%20Implementation%20Timeline%20for%202025_Brussels%20USEU_European%20Union_E42025-0001.pdf
+    publisher: USDA Foreign Agricultural Service (GAIN report)
     type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - rules-eudr
   - intelligence-plot-level-satellite-monitoring
@@ -1224,11 +566,10 @@ blips:
     horizon:
     - now
   summary: TNFD's LEAP approach is the de facto nature-risk assessment method, with over 1,000 organisations reporting TNFD-aligned.
-  rationale: TNFD's LEAP (Locate, Evaluate, Assess, Prepare) approach provides a structured method for assessing nature-related
-    dependencies, impacts, risks and opportunities. The TNFD's own 2026 Status Report counts over 1,000 organisations now
-    reporting TNFD-aligned disclosures, making LEAP the closest thing to a de facto standard method in this space — ahead
-    of the ISSB's own nature-related exposure draft, which draws directly on it. ADOPT reflects genuine, widespread, already-normal
-    practice.
+  rationale: ADOPT/E4 (unchanged ring, weaker but real uptake numbers). LEAP published Sept 2023 after piloting by 240+ organisations;
+    TNFD's first Early Adopter cohort of 320 (across 46 countries, incl. 7 of 29 GSIBs) was announced 16 Jan 2024 — both predate
+    2025-Q1. Meaningfully smaller than the 'over 1,000' 2026-Q4 cites, but still genuine, major-institution uptake (Bank of
+    America, Citi, BHP, Nestlé, Unilever named from the start). ADOPT still defensible on the method's own credibility.
   actions:
   - Run a LEAP assessment on your highest-priority sourcing landscapes as the entry point into structured nature-risk work.
   sources:
@@ -1236,12 +577,12 @@ blips:
     url: https://tnfd.global/publication/additional-guidance-on-assessment-of-nature-related-issues-the-leap-approach/
     publisher: TNFD
     type: primary
-    accessed: '2026-09-23'
-  - title: TNFD 2026 Status Report
-    url: https://tnfd.global/publication/tnfd-2026-status-report/
+    accessed: '2026-09-24'
+  - title: 320 companies and financial institutions to start TNFD nature-related corporate reporting (16 Jan 2024)
+    url: https://tnfd.global/320-companies-and-financial-institutions-to-start-tnfd-nature-related-corporate-reporting
     publisher: TNFD
     type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - rules-issb-nature-ed
   lifecycle:
@@ -1266,11 +607,8 @@ blips:
     - now
   summary: Basin-level water screening (paired with Aqueduct) is documented corporate practice at Unilever, Danone, Colgate
     and others.
-  rationale: WRI's Aqueduct User Stories and CDP's Water Security ("SW") supply-chain guidance document real organisational
-    practice — Colgate-Palmolive, Danone, Ecolab, Tyson Foods and Unilever all use basin-level water-risk screening as part
-    of supplier and facility risk assessment, and CDP's guidance formalises this as an expected disclosure practice. These
-    are primary organisational sources (not vendor marketing), satisfying the E3+ primary-source bar ADOPT requires. Pairs
-    directly with the Aqueduct dataset (intelligence-wri-aqueduct) and the Atacama water-stress condition blip.
+  rationale: ADOPT/E4, unchanged. Corporate basin-level water screening already documented, ongoing practice well before 2025-Q1
+    — the P&G/WRI case study (March 2024) shows 18 priority basins identified across 7 countries via Aqueduct-based screening.
   actions:
   - Screen priority sourcing basins with Aqueduct, then follow CDP's Water Security guidance for facility-level follow-up.
   sources:
@@ -1278,17 +616,12 @@ blips:
     url: https://www.wri.org/aqueduct/user-stories
     publisher: World Resources Institute
     type: primary
-    accessed: '2026-09-23'
-  - title: Grounding Global Water Risk Assessments in Local Data
-    url: https://www.wri.org/technical-perspectives/grounding-global-water-risk-assessments-local-data
+    accessed: '2026-09-24'
+  - title: Clear Watershed Boundaries Are Essential for Successful Water Stewardship (P&G/WRI case study, 12 March 2024)
+    url: https://wri.org/update/clear-watershed-boundaries-essential-water-stewardship
     publisher: World Resources Institute
     type: primary
-    accessed: '2026-09-23'
-  - title: Water Security guidance (CDP "SW" module)
-    url: https://guidance.cdp.net/en/guidance?cid=7031&ctype=record&idtype=RecordID&incchild=1&microsite=0&otype=Guidance
-    publisher: CDP
-    type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - intelligence-wri-aqueduct
   - conditions-water-stress-copper-lithium-basins
@@ -1318,11 +651,8 @@ blips:
     - '2030'
   summary: Jurisdictional/landscape approaches (e.g. Mato Grosso's PCI) are active but still pre-scale, not yet a settled
     method.
-  rationale: 'ISEAL''s Core Criteria for Mature Landscape Initiatives and case studies such as Mato Grosso''s PCI (Produce,
-    Conserve, Include) jurisdictional programme, referenced by Proforest and CDP, show landscape and jurisdictional sourcing
-    approaches genuinely in active use. But these remain emerging and pre-scale relative to the plot-level or basin-level
-    responses already at ADOPT — TRIAL is correctly calibrated, not understated: worth piloting now, not yet the default
-    response method.'
+  rationale: TRIAL/E3, unchanged. Mato Grosso's PCI strategy launched at COP21 (Dec 2015) and was already a multi-year, multi-stakeholder
+    programme by 2025-Q1. Genuinely active and real, but still pre-scale relative to plot/basin-level responses.
   actions:
   - Pilot a jurisdictional or landscape-level engagement in one priority sourcing region, using ISEAL's maturity criteria
     as a bar.
@@ -1331,17 +661,12 @@ blips:
     url: https://isealalliance.org/get-involved/resources/jurisdictional-and-landscape-approaches
     publisher: ISEAL Alliance
     type: secondary
-    accessed: '2026-09-23'
-  - title: Meeting Nature Goals — Landscape and Jurisdictional Approaches
-    url: https://www.cdp.net/en/insights/meeting-nature-goals-landscape-and-jurisdictional-approaches
-    publisher: CDP
+    accessed: '2026-09-24'
+  - title: The PCI Strategy in Mato Grosso — a success case
+    url: https://idh.org/news/the-pci-strategy-in-mato-grosso-a-success-case-of-balancing-food-production-conservation-and-social-inclusion
+    publisher: IDH (Sustainable Trade Initiative)
     type: secondary
-    accessed: '2026-09-23'
-  - title: From deforestation- and conversion-free to resilient production and supply chains
-    url: https://www.proforest.net/knowledge-and-resources/insights/article/from-deforestation-and-conversion-free-to-resilient-production-and-supply-chains/
-    publisher: Proforest
-    type: secondary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - conditions-soy-frontier-conversion
   - conditions-cattle-deforestation
@@ -1367,31 +692,31 @@ blips:
       - Amazon
     horizon:
     - now
-  summary: Tools like Visipec and SeloVerde pilot indirect cattle-supplier traceability, but rollout is partial and data
-    gaps persist.
-  rationale: Real pilots and tools exist for tracing indirect cattle suppliers — Visipec, Trase's SeloVerde supply-shed
-    risk mapping across 1,249 slaughterhouses, and GTFI audit guidelines. But Mongabay's late-2024 reporting and Trase's
-    own analysis both stress persistent data gaps and no full-scale rollout across the Brazilian cattle sector. TRIAL, not
-    ADOPT, reflects genuine pilot-stage tooling against a structurally hard problem (pairs directly with the indirect-supplier
-    blind spot named in the cattle-deforestation condition blip).
+  summary: Tools like Visipec and SeloVerde pilot indirect cattle-supplier traceability, but rollout is partial and data gaps
+    persist.
+  rationale: 'TRIAL/E3, unchanged. All tools/pilots named in 2026-Q4''s write-up (Visipec, SeloVerde, GTFI-style guidelines)
+    were already operating well before 2025-Q1: SeloVerde beta launched April 2021 (Pará), Minas Gerais joined 2022; Visipec
+    already integrated by Minerva Foods with documented traceability results by 2021. More period-appropriate and concrete
+    sourcing than 2026-Q4''s — the underlying pilots'' partial, tier-one-only coverage was already the defining feature of
+    this category by 2025-Q1.'
   actions:
   - Pilot Visipec or an equivalent tool on your highest-volume Brazilian cattle suppliers before assuming coverage.
   sources:
-  - title: Brazil beef industry still struggling with deforestation from indirect suppliers, survey finds
-    url: https://news.mongabay.com/2024/11/brazil-beef-industry-still-struggling-with-deforestation-from-indirect-suppliers-survey-finds/
-    publisher: Mongabay
+  - title: Minerva Foods achieves 100% traceability in direct supplier farms in Colombia
+    url: https://minervafoods.com/en/noticias/minerva-foods-achieves-100-traceability-in-direct-supplier-farms-in-colombia
+    publisher: Minerva Foods
     type: secondary
-    accessed: '2026-09-23'
-  - title: New analysis brings greater transparency to Brazilian cattle supply chains
-    url: https://trase.earth/insights/new-analysis-brings-greater-transparency-to-brazilian-cattle-supply-chains
-    publisher: Trase (SEI / Global Canopy)
-    type: analyst-judgement
-    accessed: '2026-09-23'
-  - title: Visipec — a tool to enhance traceability of indirect cattle suppliers in Brazil
-    url: https://www.visipec.com/
-    publisher: Visipec (NWF/Imaflora and collaborators)
+    accessed: '2026-09-24'
+  - title: Visualizing cattle supply chains in Brazil to enhance traceability (Visipec one-pager)
+    url: https://api.visipec.com/NWF-Visipec-1pager-ENG.pdf
+    publisher: Visipec (NWF / Gibbs Land-Use and Environment Lab, UW-Madison)
+    type: primary
+    accessed: '2026-09-24'
+  - title: Policy Brief — SeloVerde
+    url: https://ad-partnership.org/wp-content/uploads/2023/02/Policy-Brief-Selo-Verde-EU-UK-regulation-v2023-0125.pdf
+    publisher: Amsterdam Declarations Partnership
     type: secondary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - conditions-cattle-deforestation
   lifecycle:
@@ -1414,81 +739,26 @@ blips:
     - '2030'
   summary: Climate-suitability scenario modelling for coffee sourcing is scientifically strong but not yet an operational
     decision tool at scale.
-  rationale: Peer-reviewed modelling (PLOS ONE, Journal of the Science of Food and Agriculture) and bank market commentary
-    (RaboResearch) provide strong scientific grounding for using climate-suitability scenarios in coffee sourcing decisions.
-    But the evidence is mostly academic scenario studies and one bank's commentary, not documented operational sourcing-decision
-    tools deployed at scale by buyers. ASSESS is appropriately conservative here — pairs with the arabica climate-suitability
-    condition blip — worth briefing procurement and setting a decision point, not yet a standard sourcing input.
+  rationale: ASSESS/E2, unchanged. The foundational peer-reviewed modelling (Bunn et al. 2015) long predates 2025-Q1, and
+    RaboResearch's market commentary was already available. Structurally identical evidence base and ring to 2026-Q4 — one
+    of the more stable, evergreen blips in the set.
   actions:
   - Brief sourcing teams on climate-suitability scenario modelling as an input to long-term coffee contracts.
   sources:
+  - title: Projected Shifts in Coffea arabica Suitability among Major Global Producing Regions Due to Climate Change (Bunn
+      et al., 2015)
+    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4397088/
+    publisher: PLOS ONE (peer-reviewed)
+    type: primary
+    accessed: '2026-09-24'
   - title: Climate change redefines suitability and resilience in global arabica coffee production
     url: https://www.rabobank.com/knowledge/q011519061-climate-change-redefines-suitability-and-resilience-in-global-arabica-coffee-production
     publisher: RaboResearch (Rabobank)
     type: secondary
-    accessed: '2026-09-23'
-  - title: Projected Shifts in Coffea arabica Suitability among Major Global Producing Regions
-    url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4397088/
-    publisher: PLOS ONE (peer-reviewed, via PMC)
-    type: primary
-    accessed: '2026-09-23'
-  - title: Coffee Supply Chain Planning under Climate Change
-    url: https://www.tandfonline.com/doi/full/10.1080/1943815X.2022.2103570
-    publisher: Journal of the Science of Food and Agriculture (peer-reviewed)
-    type: primary
-    accessed: '2026-09-23'
+    accessed: '2026-09-24'
   related:
   - conditions-arabica-climate-suitability
   lifecycle:
     since: '2015-01-01'
     until: null
     first_edition: 2025-q1
-- id: responses-certification-as-sole-dd-evidence
-  name: Certification as sole EUDR due-diligence evidence
-  quadrant: responses
-  ring: caution
-  evidence: E3
-  severity: null
-  scope:
-    commodities: *id002
-    issues:
-    - forests-land
-    horizon:
-    - now
-  summary: EC guidance confirms certification schemes can support, but never substitute for, EUDR due diligence.
-  rationale: 'Two European Commission primary sources — the FAQ (v5, April 2026, §5.7) and the 2026 Guidance Document''s
-    Section 10 — directly and unambiguously confirm that certification and verification schemes "can be used ... to help
-    their risk assessment," but operators "will still be required to exercise due diligence, and they will remain responsible
-    for any breach." This closes off a real temptation: treating a certification stamp as a compliance shortcut. CAUTION/E3
-    reflects a well-supported, settled regulatory position — not a shifting or uncertain one.'
-  actions:
-  - Do not present certification alone as sufficient EUDR due-diligence evidence in supplier communications or internal
-    sign-off.
-  - Use certification as one input into, not a substitute for, plot-level due diligence.
-  sources:
-  - title: Frequently Asked Questions — Implementation of the EU Deforestation Regulation, Version 5
-    url: https://environment.ec.europa.eu/document/download/744919a7-8650-4850-89ad-a597268cd69e_en?filename=FAQ-UPDATE-5th-Iteration%20FINAL.pdf
-    publisher: European Commission (DG Environment)
-    type: primary
-    accessed: '2026-09-23'
-  - title: Guidance Document for the Regulation on Deforestation-Free Products (2026), Section 10
-    url: https://green-forum.ec.europa.eu/document/download/030c9bf7-a935-4d4d-91c6-bbddd745c181_en?filename=Guidance%20Document%20for%20the%20Regulation%20on%20Deforestation-Free%20Products%20%282026%29.pdf
-    publisher: European Commission
-    type: primary
-    accessed: '2026-09-23'
-  - title: EU Deforestation Regulation (EUDR) Guide
-    url: https://www.compliancegate.com/eu-deforestation-regulation/
-    publisher: ComplianceGate
-    type: secondary
-    accessed: '2026-09-23'
-  related:
-  - rules-eudr
-  - responses-plot-geolocation-traceability
-  lifecycle:
-    since: '2026-04-01'
-    until: null
-    first_edition: 2025-q1
-  events:
-  - date: '2026-04-01'
-    type: release
-    summary: EC FAQ v5 clarifies certification's role in EUDR due diligence.

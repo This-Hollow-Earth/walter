@@ -1,46 +1,46 @@
 # Edition manifest — source of truth for which editions exist, their order,
 # and which are public (advertised in the default site build's edition
-# selector) vs internal-only (historical-reconstruction editions, reachable
-# via a direct edition id or ?internal=1). All 8 are public: true for now
-# (nothing is deployed live yet) — revisit before actual public launch, since
-# 2025-Q1..2026-Q3 are placeholder data (identical copy of 2026-Q4's blips,
-# not real historical research — see each file's header comment and THI-106).
+# selector) vs internal-only. All 8 are public: true for now (nothing is
+# deployed live yet) — revisit before actual public launch. 2025-Q1..2026-Q3
+# now contain real sourced editorial research (THI-107..113 / E6 docs, folded
+# in per-quarter), not placeholder/copied-forward content — see THI-106 for
+# per-quarter scope and each E6 doc for full sourcing.
 # See THI-105 / Obsidian spec "Historical editions, time navigation, and Movers".
 editions:
   - id: 2025-q1
-    label: 2025 Q1 (placeholder — reconstruction pending)
+    label: 2025 Q1
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2025-q2
-    label: 2025 Q2 (placeholder — reconstruction pending)
+    label: 2025 Q2
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2025-q3
-    label: 2025 Q3 (placeholder — reconstruction pending)
+    label: 2025 Q3
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2025-q4
-    label: 2025 Q4 (placeholder — reconstruction pending)
+    label: 2025 Q4
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2026-q1
-    label: 2026 Q1 (placeholder — reconstruction pending)
+    label: 2026 Q1
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2026-q2
-    label: 2026 Q2 (placeholder — reconstruction pending)
+    label: 2026 Q2
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2026-q3
-    label: 2026 Q3 (placeholder — reconstruction pending)
+    label: 2026 Q3
     published: null
-    status: historical-reconstruction
+    status: historical
     public: true
   - id: 2026-q4
     label: 2026 Q4 · v0.1

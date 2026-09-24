@@ -135,7 +135,7 @@ blips:
   lifecycle:
     since: '2026-07-03'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q3
   events:
   - date: '2026-07-03'
     type: release
@@ -188,7 +188,7 @@ blips:
   lifecycle:
     since: '2026-02-01'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q1
   events:
   - date: '2026-02-01'
     type: amendment
@@ -244,7 +244,7 @@ blips:
   lifecycle:
     since: '2025-07-18'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2025-q3
   events:
   - date: '2025-07-18'
     type: delay
@@ -296,7 +296,7 @@ blips:
   lifecycle:
     since: '2026-07-21'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q3
   events:
   - date: '2026-07-21'
     type: milestone
@@ -339,7 +339,7 @@ blips:
   lifecycle:
     since: '2026-10-13'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q4
   events:
   - date: '2026-10-13'
     type: release
@@ -397,7 +397,7 @@ blips:
   lifecycle:
     since: '2026-07-03'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q3
   events:
   - date: '2026-07-03'
     type: release
@@ -449,7 +449,7 @@ blips:
   lifecycle:
     since: '2025-05-26'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2025-q2
   events:
   - date: '2025-05-23'
     type: release
@@ -512,7 +512,7 @@ blips:
   lifecycle:
     since: '2026-01-05'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q1
   events:
   - date: '2026-01-05'
     type: milestone
@@ -571,7 +571,7 @@ blips:
   lifecycle:
     since: '2025-10-15'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2025-q4
   events:
   - date: '2025-10-15'
     type: evidence
@@ -807,7 +807,7 @@ blips:
   lifecycle:
     since: '2025-10-01'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2025-q4
   events:
   - date: '2025-10-01'
     type: evidence
@@ -1033,7 +1033,7 @@ blips:
   lifecycle:
     since: null
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q4
   events: []
 - id: intelligence-plot-level-satellite-monitoring
   name: Plot-level satellite deforestation monitoring (as a category)
@@ -1162,7 +1162,7 @@ blips:
   lifecycle:
     since: '2026-07-01'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q3
   events:
   - date: '2026-07-01'
     type: evidence
@@ -1485,7 +1485,7 @@ blips:
   lifecycle:
     since: '2026-04-01'
     until: null
-    first_edition: 2025-q1
+    first_edition: 2026-q2
   events:
   - date: '2026-04-01'
     type: release
